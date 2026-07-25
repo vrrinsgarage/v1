@@ -207,8 +207,7 @@ const packageData = {
                 "Pelumasan Titik Gesek",
                 "Setel Rem Tromol",
                 "Uji Fungsi Rem"
-            ]
-        }
+            
 
     ]
 
