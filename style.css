@@ -1,0 +1,1921 @@
+/* ===================================================
+   VRRINS GARAGE
+   STYLE.CSS
+   FINAL V4
+   Part 1
+=================================================== */
+
+/* ==========================
+   RESET
+========================== */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#111111;
+    color:#ffffff;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* ==========================
+   ROOT
+========================== */
+
+:root{
+
+    --black:#111111;
+    --dark:#1b1b1b;
+    --dark-light:#242424;
+
+    --red:#d50000;
+    --red-hover:#b00000;
+
+    --white:#ffffff;
+    --gray:#bdbdbd;
+
+    --green:#25D366;
+    --green-hover:#1ebe5d;
+
+    --border:#303030;
+
+    --radius:16px;
+
+    --shadow:0 10px 25px rgba(0,0,0,.25);
+
+    --transition:.30s ease;
+
+}
+
+/* ==========================
+   ELEMENT
+========================== */
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
+ul{
+    list-style:none;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+
+    width:min(1180px,92%);
+    margin:auto;
+
+}
+
+section{
+
+    padding:80px 0;
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+    color:#fff;
+
+}
+
+.section-title p{
+
+    color:var(--gray);
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:rgba(17,17,17,.95);
+
+    backdrop-filter:blur(10px);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.navbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    min-height:74px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.logo img{
+
+    width:44px;
+
+    height:44px;
+
+    object-fit:cover;
+
+}
+
+.logo h1{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+.nav-menu a{
+
+    color:#fff;
+
+    transition:var(--transition);
+
+}
+
+.nav-menu a:hover{
+
+    color:var(--red);
+
+}
+
+/* ==========================
+   MOBILE MENU BUTTON
+========================== */
+
+.menu-toggle{
+
+    display:none;
+
+    width:46px;
+
+    height:46px;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:28px;
+
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.btn-primary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+    background:var(--green);
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.btn-primary:hover{
+
+    background:var(--green-hover);
+
+}
+
+.btn-secondary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+    border:2px solid var(--red);
+
+    color:#fff;
+
+    transition:var(--transition);
+
+}
+
+.btn-secondary:hover{
+
+    background:var(--red);
+
+}
+
+.btn-booking{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:var(--green);
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.btn-booking:hover{
+
+    background:var(--green-hover);
+
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.feature-card,
+.service-card,
+.condition-card,
+.workflow-card,
+.contact-card{
+
+    background:var(--dark);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+}
+
+.feature-card:hover,
+.service-card:hover,
+.condition-card:hover,
+.workflow-card:hover,
+.contact-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:var(--red);
+
+}
+
+/* ==========================
+   LABEL
+========================== */
+
+.service-category{
+
+    display:inline-block;
+
+    margin-bottom:8px;
+
+    color:var(--gray);
+
+    font-size:14px;
+
+}
+
+.service-label{
+
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+.start{
+
+    background:#ffd54f;
+
+    color:#000;
+
+}
+
+.best{
+
+    background:#f44336;
+
+}
+
+.recommend{
+
+    background:#4caf50;
+
+}
+
+.save{
+
+    background:#2196f3;
+
+}
+
+.premium{
+
+    background:#9c27b0;
+
+}
+
+/* ===================================================
+   HERO SECTION
+=================================================== */
+
+.hero{
+
+    padding:90px 0 70px;
+
+    background:linear-gradient(
+        180deg,
+        #111111 0%,
+        #171717 100%
+    );
+
+}
+
+.hero-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+.hero-content h2{
+
+    font-size:48px;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+
+    color:var(--white);
+
+}
+
+.hero-content p{
+
+    color:var(--gray);
+
+    font-size:17px;
+
+    margin-bottom:35px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-image{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:520px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ===================================================
+   KEUNGGULAN
+=================================================== */
+
+.features{
+
+    background:#151515;
+
+}
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+.feature-card{
+
+    padding:30px 24px;
+
+    text-align:center;
+
+}
+
+.feature-card i{
+
+    font-size:42px;
+
+    color:var(--red);
+
+    margin-bottom:18px;
+
+}
+
+.feature-card h3{
+
+    font-size:20px;
+
+    margin-bottom:12px;
+
+}
+
+.feature-card p{
+
+    color:var(--gray);
+
+    font-size:15px;
+
+}
+
+/* ===================================================
+   PAKET PERAWATAN
+=================================================== */
+
+.package-section{
+
+    background:#111111;
+
+}
+
+.package-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:28px;
+
+}
+
+.service-card img{
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+}
+
+.service-content{
+
+    padding:24px;
+
+}
+
+.service-content h3{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+}
+
+.service-content p{
+
+    color:var(--gray);
+
+    margin-bottom:20px;
+
+}
+
+.service-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.service-price{
+
+    color:var(--green);
+
+    font-weight:700;
+
+}
+
+.service-time{
+
+    color:var(--gray);
+
+    font-size:14px;
+
+}
+
+.detail-button{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:var(--red);
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.detail-button:hover{
+
+    background:var(--red-hover);
+
+}
+
+/* ===================================================
+   SPACING
+=================================================== */
+
+.hero,
+.features,
+.package-section{
+
+    scroll-margin-top:90px;
+
+}
+
+/* ===================================================
+   LAYANAN BERDASARKAN KONDISI MOBIL
+=================================================== */
+
+.condition-section{
+
+    background:var(--dark);
+
+}
+
+.condition-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+.condition-card{
+
+    padding:25px;
+
+}
+
+.condition-card h3{
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
+    color:var(--white);
+
+}
+
+.condition-card ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.condition-card li{
+
+    padding:12px 14px;
+
+    background:var(--dark-light);
+
+    border-radius:10px;
+
+    color:var(--gray);
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+.condition-card li:hover{
+
+    background:var(--red);
+
+    color:#fff;
+
+}
+
+/* ===================================================
+   ALUR LAYANAN
+=================================================== */
+
+.workflow-section{
+
+    background:#111111;
+
+}
+
+.workflow-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:20px;
+
+}
+
+.workflow-card{
+
+    padding:25px 20px;
+
+    text-align:center;
+
+}
+
+.workflow-number{
+
+    width:55px;
+
+    height:55px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:var(--red);
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.workflow-card h3{
+
+    margin-bottom:12px;
+
+    font-size:18px;
+
+}
+
+.workflow-card p{
+
+    color:var(--gray);
+
+    font-size:15px;
+
+}
+
+/* ===================================================
+   WILAYAH OPERASIONAL
+=================================================== */
+
+.coverage-section{
+
+    background:var(--dark);
+
+}
+
+.coverage-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+
+}
+
+.coverage-image img{
+
+    width:100%;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+.coverage-info h3{
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
+}
+
+.coverage-info p{
+
+    color:var(--gray);
+
+    margin-bottom:25px;
+
+}
+
+.zone-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.zone-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:16px 18px;
+
+    border-radius:12px;
+
+    background:var(--dark-light);
+
+    border:1px solid var(--border);
+
+}
+
+.zone-name{
+
+    font-weight:bold;
+
+    color:#fff;
+
+}
+
+.zone-distance{
+
+    color:var(--gray);
+
+}
+
+.zone-green{
+
+    border-left:5px solid #28a745;
+
+}
+
+.zone-yellow{
+
+    border-left:5px solid #ffc107;
+
+}
+
+.zone-red{
+
+    border-left:5px solid #dc3545;
+
+}
+
+/* ===================================================
+   FAQ
+=================================================== */
+
+.faq-section{
+
+    background:#111111;
+
+}
+
+.faq-container{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+.faq-item{
+
+    background:var(--dark);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    margin-bottom:18px;
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+}
+
+.faq-item:hover{
+
+    border-color:var(--red);
+
+}
+
+.faq-question{
+
+    width:100%;
+
+    padding:20px 24px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:none;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    text-align:left;
+
+}
+
+.faq-question span{
+
+    font-size:24px;
+
+    color:var(--red);
+
+}
+
+.faq-answer{
+
+    display:none;
+
+    padding:0 24px 20px;
+
+    color:var(--gray);
+
+    line-height:1.8;
+
+}
+
+.faq-item.active .faq-answer{
+
+    display:block;
+
+}
+
+/* ===================================================
+   CONTACT
+=================================================== */
+
+.contact-section{
+
+    background:var(--dark);
+
+}
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+.contact-card{
+
+    padding:28px;
+
+    text-align:center;
+
+}
+
+.contact-icon{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:var(--red);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    color:#fff;
+
+}
+
+.contact-card h3{
+
+    margin-bottom:10px;
+
+    font-size:20px;
+
+}
+
+.contact-card p{
+
+    color:var(--gray);
+
+    margin-bottom:20px;
+
+}
+
+.contact-card a{
+
+    color:var(--green);
+
+    font-weight:700;
+
+}
+
+.contact-card a:hover{
+
+    color:var(--green-hover);
+
+}
+
+/* ===================================================
+   FOOTER
+=================================================== */
+
+.footer{
+
+    background:#0b0b0b;
+
+    border-top:1px solid var(--border);
+
+    padding:60px 0 30px;
+
+}
+
+.footer-content{
+
+    text-align:center;
+
+}
+
+.footer-logo{
+
+    width:80px;
+
+    margin:0 auto 20px;
+
+}
+
+.footer h2{
+
+    margin-bottom:12px;
+
+}
+
+.footer p{
+
+    color:var(--gray);
+
+    margin-bottom:10px;
+
+}
+
+.footer-menu{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin:30px 0;
+
+}
+
+.footer-menu a{
+
+    transition:var(--transition);
+
+}
+
+.footer-menu a:hover{
+
+    color:var(--red);
+
+}
+
+.footer-contact{
+
+    margin-bottom:25px;
+
+}
+
+.footer-contact a{
+
+    color:var(--green);
+
+    font-weight:bold;
+
+}
+
+.copyright{
+
+    margin-top:20px;
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+/* ===================================================
+   FLOATING WHATSAPP
+=================================================== */
+
+.floating-whatsapp{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    box-shadow:var(--shadow);
+
+    z-index:999;
+
+    transition:var(--transition);
+
+}
+
+.floating-whatsapp:hover{
+
+    background:var(--green-hover);
+
+    transform:scale(1.08);
+
+}
+
+/* ===================================================
+   BACK TO TOP
+=================================================== */
+
+.back-to-top{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:95px;
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:var(--red);
+
+    color:#fff;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    box-shadow:var(--shadow);
+
+    z-index:998;
+
+    transition:var(--transition);
+
+}
+
+.back-to-top:hover{
+
+    background:var(--red-hover);
+
+}
+
+/* ===================================================
+   POPUP OVERLAY
+=================================================== */
+
+.popup-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:2000;
+
+}
+
+.popup-overlay.active{
+
+    display:flex;
+
+}
+
+/* ===================================================
+   POPUP CONTAINER
+=================================================== */
+
+.popup{
+
+    width:100%;
+
+    max-width:900px;
+
+    max-height:90vh;
+
+    background:var(--dark);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    animation:popupShow .25s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px) scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+/* ===================================================
+   POPUP HEADER
+=================================================== */
+
+.popup-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    background:#181818;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.popup-header h2{
+
+    font-size:22px;
+
+}
+
+.popup-close{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:var(--red);
+
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:var(--transition);
+
+}
+
+.popup-close:hover{
+
+    background:var(--red-hover);
+
+}
+
+/* ===================================================
+   POPUP BODY
+=================================================== */
+
+.popup-body{
+
+    padding:25px;
+
+    overflow-y:auto;
+
+}
+
+/* ===================================================
+   SYSTEM GRID
+=================================================== */
+
+.popup-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.popup-card{
+
+    background:var(--dark-light);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+.popup-card:hover{
+
+    border-color:var(--red);
+
+    transform:translateY(-3px);
+
+}
+
+.popup-card h3{
+
+    margin-bottom:10px;
+
+    font-size:18px;
+
+}
+
+.popup-card p{
+
+    color:var(--gray);
+
+    font-size:14px;
+
+}
+
+/* ===================================================
+   DETAIL LAYANAN
+=================================================== */
+
+.detail-image img{
+
+    width:100%;
+
+    border-radius:14px;
+
+    margin-bottom:20px;
+
+}
+
+.detail-info h3{
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.detail-info p{
+
+    color:var(--gray);
+
+    margin-bottom:18px;
+
+}
+
+.detail-section{
+
+    margin-top:25px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.detail-section h4{
+
+    margin-bottom:12px;
+
+    color:#fff;
+
+}
+
+.detail-section ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.detail-section li{
+
+    color:var(--gray);
+
+    padding-left:18px;
+
+    position:relative;
+
+}
+
+.detail-section li::before{
+
+    content:"•";
+
+    color:var(--red);
+
+    position:absolute;
+
+    left:0;
+
+}
+
+.detail-price{
+
+    color:var(--green);
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+.detail-time{
+
+    color:var(--gray);
+
+    margin-top:6px;
+
+}
+
+.detail-booking{
+
+    margin-top:30px;
+
+}
+
+/* ===================================================
+   RESPONSIVE TABLET
+=================================================== */
+
+@media (max-width:992px){
+
+    .hero-grid,
+    .coverage-grid{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+    }
+
+    .hero-content{
+
+        text-align:center;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .package-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .condition-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .workflow-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ===================================================
+   RESPONSIVE MOBILE
+=================================================== */
+
+@media (max-width:768px){
+
+    section{
+
+        padding:60px 0;
+
+    }
+
+    .section-title h2{
+
+        font-size:28px;
+
+    }
+
+    .section-title p{
+
+        font-size:15px;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+    }
+
+    .nav-menu{
+
+        position:absolute;
+
+        top:74px;
+
+        left:0;
+
+        width:100%;
+
+        background:var(--black);
+
+        border-top:1px solid var(--border);
+
+        flex-direction:column;
+
+        gap:0;
+
+        display:none;
+
+    }
+
+    .nav-menu.active{
+
+        display:flex;
+
+    }
+
+    .nav-menu a{
+
+        width:100%;
+
+        padding:18px 25px;
+
+        border-bottom:1px solid var(--border);
+
+    }
+
+    .hero{
+
+        padding:70px 0;
+
+    }
+
+    .hero-content h2{
+
+        font-size:34px;
+
+    }
+
+    .hero-content p{
+
+        font-size:15px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+
+    }
+
+    .features-grid,
+    .condition-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .workflow-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .popup-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .popup{
+
+        max-height:95vh;
+
+    }
+
+    .popup-body{
+
+        padding:20px;
+
+    }
+
+    .footer-menu{
+
+        flex-direction:column;
+
+        gap:14px;
+
+    }
+
+}
+
+/* ===================================================
+   SMALL MOBILE
+=================================================== */
+
+@media (max-width:480px){
+
+    .container{
+
+        width:94%;
+
+    }
+
+    .logo img{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+    .logo h1{
+
+        font-size:18px;
+
+    }
+
+    .hero-content h2{
+
+        font-size:30px;
+
+    }
+
+    .service-content{
+
+        padding:18px;
+
+    }
+
+    .service-content h3{
+
+        font-size:20px;
+
+    }
+
+    .detail-info h3{
+
+        font-size:24px;
+
+    }
+
+    .floating-whatsapp{
+
+        width:56px;
+
+        height:56px;
+
+        font-size:26px;
+
+    }
+
+    .back-to-top{
+
+        width:46px;
+
+        height:46px;
+
+        font-size:18px;
+
+    }
+
+}
+
+/* ===================================================
+   IMAGE DEFAULT
+=================================================== */
+
+img{
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+/* ===================================================
+   SELECTION
+=================================================== */
+
+::selection{
+
+    background:var(--red);
+
+    color:#fff;
+
+}
+
+/* ===================================================
+   SCROLLBAR
+=================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#151515;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--red);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--red-hover);
+
+}
+
+/* ===================================================
+   END OF FILE
+=================================================== */
+
