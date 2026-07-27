@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VRRINS GARAGE - Servis Mobil Panggilan Palembang</title>
+    <meta name="description" content="Dak galak ke bengkel? Pacak. Mekanik VRRINS GARAGE yang datang ke rumah! Servis mobil profesional di Palembang.">
+    
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts: Inter untuk tampilan modern & premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+
+    <!-- =========================
+         1. NAVIGASI (HEADER)
+         ========================= -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="VRRINS GARAGE Logo" class="logo-img">
+                <span class="logo-text">VRRINS GARAGE</span>
+            </div>
+            
+            <button class="hamburger-menu" aria-label="Buka Menu" id="hamburgerBtn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#beranda" class="nav-item">Beranda</a>
+                <a href="#layanan-vg" class="nav-item">Layanan</a>
+                <a href="#cara-kerja" class="nav-item">Cara Kerja</a>
+                <a href="#wilayah" class="nav-item">Area Layanan</a>
+                <a href="#faq" class="nav-item">FAQ</a>
+                <a href="https://wa.me/62895622499262" class="nav-item btn-nav-wa" target="_blank">Booking WhatsApp</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =========================
+         2. HERO SECTION
+         ========================= -->
+    <section id="beranda" class="hero-section">
+        <div class="hero-bg">
+            <!-- Gambar hero.jpg ukuran 1536x1024 -->
+            <img src="images/hero.jpg" alt="Mekanik VRRINS GARAGE Servis di Rumah" class="hero-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <span class="badge-premium">⭐ Layanan Home Service Palembang</span>
+            <h1 class="hero-title">
+                Booking Lewat <span class="highlight-green">WhatsApp</span>, <br>
+                <span class="highlight-red">Pacak</span> Santai di Rumah
+            </h1>
+            
+            <div class="hero-subheadline">
+                <ul class="hero-features">
+                    <li><span class="icon">💰</span> Hargo transparan</li>
+                    <li><span class="icon">🔍</span> Kito pacak tau penyakit mobel</li>
+                    <li><span class="icon">🏠</span> Mobel didandani di rumah</li>
+                    <li><span class="icon">🚗</span> Dak payah ke bengkel</li>
+                </ul>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="https://wa.me/62895622499262" class="btn btn-wa-primary" target="_blank">
+                    <span class="icon-wa">🟢</span> Booking WhatsApp
+                </a>
+                <a href="#layanan-vg" class="btn btn-outline-light">
+                    <span class="icon-gear">⚫</span> Lihat Layanan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         3. KEUNGGULAN SINGKAT (SCROLL TAPE)
+         ========================= -->
+    <div class="keunggulan-bar">
+        <div class="container">
+            <div class="keunggulan-track">
+                <span>✔ Mekanik Profesional</span>
+                <span>✔ Servis Sesuai Kondisi</span>
+                <span>✔ Hargo Transparan</span>
+                <span>✔ Area Palembang</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+         4. PAKET LAYANAN VG (GRID 2x2)
+         ========================= -->
+    <section id="layanan-vg" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>PAKET PERAWATAN VG</h2>
+                <p>Pilih paket perawatan berkala terbaik untuk mobil Anda. Mulai dari pengecekan hingga servis total.</p>
+            </div>
+
+            <div class="grid-2x2" id="paketVGContainer">
+                <!-- KARTU 1: VG CHECK -->
+                <div class="card-paket">
+                    <div class="card-badge badge-mulai">🟡 MULAI DARI SINI</div>
+                    <div class="card-img-wrapper">
+                        <img src="images/vg-check.jpg" alt="VG Check" class="card-img" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>⚙️ VG CHECK</h3>
+                        <p>Pemeriksaan menyeluruh kendaraan</p>
+                        <div class="card-meta">
+                            <span>⏱️ 30–90 Menit</span>
+                            <span>💰 Rp100K–Rp150K</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-detail w-100" onclick="openServiceDetail('vg-check')">LIHAT DETAIL</button>
+                </div>
+
+                <!-- KARTU 2: VG TUNE -->
+                <div class="card-paket">
+                    <div class="card-badge badge-terlaris">🔴 BEST SELLER</div>
+                    <div class="card-img-wrapper">
+                        <img src="images/vg-tune.jpg" alt="VG Tune" class="card-img" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>🔧 VG TUNE</h3>
+                        <p>Tune Up Mesin Bensin & Diesel</p>
+                        <div class="card-meta">
+                            <span>⏱️ 45–150 Menit</span>
+                            <span>💰 Mulai Rp150K</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-detail w-100" onclick="openServiceDetail('vg-tune-basic-bensin')">LIHAT DETAIL</button>
+                </div>
+
+                <!-- KARTU 3: VG BRAKE -->
+                <div class="card-paket">
+                    <div class="card-badge badge-populer">🔵 POPULER</div>
+                    <div class="card-img-wrapper">
+                        <img src="images/vg-brake.jpg" alt="VG Brake" class="card-img" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>🛑 VG BRAKE</h3>
+                        <p>Servis & Setel Sistem Rem</p>
+                        <div class="card-meta">
+                            <span>⏱️ 45–90 Menit</span>
+                            <span>💰 Rp140K–Rp175K</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-detail w-100" onclick="openServiceDetail('vg-brake-service')">LIHAT DETAIL</button>
+                </div>
+
+                <!-- KARTU 4: VG OIL -->
+                <div class="card-paket">
+                    <div class="card-badge badge-rekomendasi">🟢 REKOMENDASI</div>
+                    <div class="card-img-wrapper">
+                        <img src="images/vg-oil.jpg" alt="VG Oil" class="card-img" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>🛢️ VG OIL</h3>
+                        <p>Ganti Oli Mesin & Transmisi</p>
+                        <div class="card-meta">
+                            <span>⏱️ 15–30 Menit</span>
+                            <span>💰 Mulai Rp50K</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-detail w-100" onclick="openServiceDetail('vg-oil-service')">LIHAT DETAIL</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         5. KATEGORI KONDISI MOBIL (GRID 3x3)
+         ========================= -->
+    <section id="kategori-kondisi" class="section-padding bg-graphite">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>LAYANAN BERDASARKAN KONDISI</h2>
+                <p>Pilih keluhan atau bagian mobil yang ingin diperiksa.</p>
+            </div>
+
+            <div class="grid-3x3" id="kategoriMobilContainer">
+                <!-- 9 Kategori akan di-generate/dihubungkan dengan JS. Berikut hardcode HTML-nya: -->
+                
+                <div class="card-kategori" onclick="openCategoryModal('MESIN')">
+                    <img src="images/kat-mesin.jpg" alt="Mesin" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>⚙️ Mesin</h4>
+                        <p>Diagnosa & Perawatan</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('PELUMASAN')">
+                    <img src="images/kat-pelumasan.jpg" alt="Pelumasan" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>💧 Pelumasan</h4>
+                        <p>Oli & Cairan</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('BAHAN BAKAR')">
+                    <img src="images/kat-bahanbakar.jpg" alt="Bahan Bakar" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>⛽ B. Bakar</h4>
+                        <p>Injeksi & Filter</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('SUSPENSI')">
+                    <img src="images/kat-suspensi.jpg" alt="Suspensi" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>🚙 Suspensi</h4>
+                        <p>Kaki-kaki & Shock</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('KEMUDI')">
+                    <img src="images/kat-kemudi.jpg" alt="Kemudi" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>🎯 Kemudi</h4>
+                        <p>Setir & Rack</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('REM')">
+                    <img src="images/kat-rem.jpg" alt="Rem" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>🛑 Rem</h4>
+                        <p>Kampas & Kaliper</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('PENDINGIN')">
+                    <img src="images/kat-pendingin.jpg" alt="Pendingin" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>🌡 Pendingin</h4>
+                        <p>Radiator & Suhu</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('TRANSMISI')">
+                    <img src="images/kat-transmisi.jpg" alt="Transmisi" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>⚙ Transmisi</h4>
+                        <p>Matic & Manual</p>
+                    </div>
+                </div>
+
+                <div class="card-kategori" onclick="openCategoryModal('KELISTRIKAN MESIN')">
+                    <img src="images/kat-kelistrikan.jpg" alt="Kelistrikan" class="kat-img" loading="lazy">
+                    <div class="kat-body">
+                        <h4>🔋 Kelistrikan</h4>
+                        <p>Aki & Starter</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         6. CARA KERJA (ALUR PROSES)
+         ========================= -->
+    <section id="cara-kerja" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>CARA KERJA KAMI</h2>
+                <p>Servis mudah & transparan, langsung di rumah Anda.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-icon">1</div>
+                    <div class="timeline-content">
+                        <h3>📲 Booking</h3>
+                        <p>Pilih layanan & tentukan jadwal via WhatsApp. Mekanik kami siap meluncur.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">2</div>
+                    <div class="timeline-content">
+                        <h3>🔍 Check</h3>
+                        <p>Mekanik mendiagnosa kendaraan dan menganalisa penyebab masalah di lokasi.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">3</div>
+                    <div class="timeline-content">
+                        <h3>💰 Estimasi</h3>
+                        <p>Hasil pemeriksaan dijelaskan & estimasi biaya diberikan sebelum pengerjaan dimulai.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">4</div>
+                    <div class="timeline-content">
+                        <h3>🔧 Servis</h3>
+                        <p>Setelah persetujuan, mekanik melakukan perbaikan dengan rapi dan profesional.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-final">
+                    <div class="timeline-icon final-check-icon">✅</div>
+                    <div class="timeline-content">
+                        <h3>Final Check</h3>
+                        <p>Pemeriksaan ulang pasca servis. Mobil siap digunakan kembali dengan aman!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         7. WILAYAH OPERASIONAL
+         ========================= -->
+    <section id="wilayah" class="section-padding bg-graphite">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>WILAYAH OPERASIONAL</h2>
+                <p>Mencakup seluruh area Palembang dan sekitarnya.</p>
+            </div>
+
+            <div class="map-wrapper">
+                <!-- Gambar zona-peta.jpg ukuran 1000x1000 px -->
+                <img src="images/zona-peta.jpg" alt="Peta Operasional VRRINS GARAGE" class="map-img" loading="lazy">
+            </div>
+
+            <div class="zona-legend">
+                <div class="legend-item">
+                    <span class="dot dot-hijau"></span>
+                    <div>
+                        <strong>Zona Hijau (0 - 8 KM)</strong>
+                        <p>Gratis biaya transport / Biaya standar.</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <span class="dot dot-kuning"></span>
+                    <div>
+                        <strong>Zona Kuning (8 - 15 KM)</strong>
+                        <p>Biaya transport menyesuaikan.</p>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <span class="dot dot-merah"></span>
+                    <div>
+                        <strong>Zona Merah (> 15 KM)</strong>
+                        <p>Berdasarkan kesepakatan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         8. KENAPA MEMILIH KAMI & FAQ
+         ========================= -->
+    <section id="faq" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>TANYA JAWAB (FAQ)</h2>
+                <p>Informasi seputar layanan, harga, dan operasional kami.</p>
+            </div>
+
+            <div class="accordion-container" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">Bagaimana cara booking layanan?</button>
+                    <div class="accordion-content">
+                        <p>Sangat mudah! Cukup klik tombol "Booking WhatsApp" di website ini, pilih layanan yang Anda butuhkan, dan mekanik kami akan mengatur jadwal kunjungan ke lokasi Anda.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">Apakah harga sudah termasuk spare part?</button>
+                    <div class="accordion-content">
+                        <p>Harga yang tertera adalah untuk jasa servis dan pemeriksaan (sesuai deskripsi layanan). Biaya spare part, oli, atau komponen tambahan akan diestimasikan terpisah secara transparan sebelum pengerjaan dimulai.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">Apakah ada garansi pengerjaan?</button>
+                    <div class="accordion-content">
+                        <p>Ya, kami memberikan garansi untuk setiap pengerjaan servis demi memastikan keamanan dan kenyamanan kendaraan Anda pasca perbaikan.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="accordion-item">
+                    <button class="accordion-header">Area mana saja yang dijangkau?</button>
+                    <div class="accordion-content">
+                        <p>Saat ini VRRINS GARAGE melayani area Palembang dan sekitarnya sesuai dengan peta pembagian Zona Wilayah Operasional kami (Hijau, Kuning, Merah).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         9. FOOTER & KONTAK
+         ========================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo.jpg" alt="VRRINS GARAGE" class="footer-logo">
+                    <p>Dak galak ke bengkel? Pacak. Mekanik VRRINS GARAGE yang datang ke rumah!</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <ul>
+                        <li>📞 +62 895-6224-99262</li>
+                        <li>🕒 Buka Setiap Hari</li>
+                        <li>📍 Palembang, Sumatera Selatan</li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Media Sosial</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/vrrinsgarage?igsh=b2c4Y3NwNmozeHMw" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/share/1E2hkLjaQo/" target="_blank">Facebook</a>
+                        <a href="https://www.tiktok.com/@vrrinsgarage?_r=1&_t=ZS-98Ktjip8zSe" target="_blank">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 VRRINS GARAGE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================
+         10. FLOATING WHATSAPP BUTTON
+         ========================= -->
+    <a href="https://wa.me/62895622499262" class="floating-wa" target="_blank" aria-label="Chat via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFFFFF" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+        </svg>
+    </a>
+
+    <!-- =========================
+         11. MODAL POP-UP (DYNAMIC INJECTION)
+         ========================= -->
+    <div id="serviceModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModalBtn" aria-label="Tutup">&times;</button>
+            <div id="modalBody">
+                <!-- Konten dinamis akan disuntikkan ke sini melalui script.js menggunakan database services.js -->
+            </div>
+        </div>
+    </div>
+
+    <div id="categoryModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="closeCatModalBtn" aria-label="Tutup">&times;</button>
+            <div id="catModalBody">
+                <!-- Daftar layanan dalam satu kategori disuntikkan di sini -->
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+         SCRIPTS
+         ========================= -->
+    <!-- 1. Database Layanan (54 Item Terkunci) -->
+    <script src="services.js"></script>
+    
+    <!-- 2. Logic Interaksi & DOM Manipulation -->
+    <script src="script.js"></script>
+    
+</body>
+</html>
