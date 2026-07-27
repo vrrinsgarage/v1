@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VRRINS GARAGE - Servis Mobil Rumahan & Mekanik Panggilan Palembang</title>
+  <meta name="description" content="Servis mobil rumahan & mekanik panggilan khusus wilayah Palembang. Santai di rumah, kami yang datang!">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION
+  ========================================== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="images/logo.jpg" alt="VRRINS GARAGE Logo" class="logo-img">
+        <span class="logo-text">VRRINS<span>GARAGE</span></span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Buka Menu">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Beranda</a></li>
+          <li><a href="#paket-vg" class="nav-link">Paket VG</a></li>
+          <li><a href="#layanan-kondisi" class="nav-link">Layanan Kondisi</a></li>
+          <li><a href="#cara-kerja" class="nav-link">Cara Kerja</a></li>
+          <li><a href="#area" class="nav-link">Wilayah</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#kontak" class="nav-link">Kontak</a></li>
+        </ul>
+        <a href="https://wa.me/62895622499262?text=Halo%2C%20kak.%20%F0%9F%90%8B%0ABiso%20bantu%20jadwalkan%20booking%3F%0AAku%20nak%20booking%20layanan%20servis.%0ATerima%20kasih.%20%F0%9F%99%8F" class="btn btn-wa nav-btn-wa" target="_blank" rel="noopener">
+          💬 Booking WA
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO SECTION
+  ========================================== -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-badge">Mekanik Panggilan Palembang</div>
+      <h1 class="hero-headline">Santai di Rumah, Kami yang Datang.</h1>
+      <p class="hero-subheadline">
+        Dak galak ke bengkel? Pacak. Mekanik VRRINS GARAGE yang datang ke rumah! Servis mobil rumahan & mekanik panggilan khusus wilayah Palembang.
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://wa.me/62895622499262?text=Halo%2C%20kak.%20%F0%9F%90%8B%0ABiso%20bantu%20jadwalkan%20booking%3F%0AAku%20nak%20booking%20layanan%20servis.%0ATerima%20kasih.%20%F0%9F%99%8F" class="btn btn-wa" target="_blank" rel="noopener">
+          🟢 Booking WhatsApp
+        </a>
+        <a href="#paket-vg" class="btn btn-secondary">
+          ⚫ Lihat Layanan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       KEUNGGULAN BRAND
+  ========================================== -->
+  <section class="features-bar">
+    <div class="container">
+      <div class="features-wrapper">
+        <div class="feature-item">✔ Mekanik Profesional</div>
+        <div class="feature-item">✔ Pemeriksaan Sesuai Kondisi</div>
+        <div class="feature-item">✔ Servis di Rumah / Lokasi Anda</div>
+        <div class="feature-item">✔ Harga Transparan</div>
+        <div class="feature-item">✔ Booking Mudah via WA</div>
+        <div class="feature-item">✔ Area Layanan Palembang</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       LAYANAN 1: PAKET PERAWATAN VG (GRID 2x2)
+  ========================================== -->
+  <section id="paket-vg" class="section-padding">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Paket Utama</span>
+        <h2 class="section-title">PAKET PERAWATAN VG</h2>
+        <p class="section-subtitle">Digunakan untuk pelanggan yang sudah mengetahui layanan yang dibutuhkan.</p>
+      </div>
+
+      <!-- Grid 2x2 Mode Mobile First -->
+      <div class="vg-grid-2x2">
+        
+        <!-- Card 1: VG CHECK -->
+        <div class="vg-card" onclick="openModal('vg-check')">
+          <div class="vg-card-badge badge-yellow">🟡 MULAI DARI SINI</div>
+          <div class="vg-card-img-wrap">
+            <img src="images/vg-check.jpg" alt="VG CHECK" class="vg-card-img" loading="lazy">
+          </div>
+          <div class="vg-card-body">
+            <h3 class="vg-card-title">⚙️ VG CHECK</h3>
+            <p class="vg-card-desc">Pemeriksaan menyeluruh kondisi kendaraan.</p>
+            <div class="vg-card-meta">
+              <span class="meta-time">⏱️ 30–90 Menit</span>
+              <span class="meta-price">💰 Rp100K–Rp150K</span>
+            </div>
+          </div>
+          <div class="vg-card-footer">
+            <button class="btn btn-crimson btn-block">LIHAT DETAIL</button>
+          </div>
+        </div>
+
+        <!-- Card 2: VG TUNE -->
+        <div class="vg-card" onclick="openModal('vg-tune-basic-bensin')">
+          <div class="vg-card-badge badge-red">🔴 BEST SELLER</div>
+          <div class="vg-card-img-wrap">
+            <img src="images/vg-tune.jpg" alt="VG TUNE" class="vg-card-img" loading="lazy">
+          </div>
+          <div class="vg-card-body">
+            <h3 class="vg-card-title">🔧 VG TUNE</h3>
+            <p class="vg-card-desc">Tune Up Mesin Bensin & Diesel berkualitas.</p>
+            <div class="vg-card-meta">
+              <span class="meta-time">⏱️ 45–150 Menit</span>
+              <span class="meta-price">💰 Mulai Rp150K</span>
+            </div>
+          </div>
+          <div class="vg-card-footer">
+            <button class="btn btn-crimson btn-block">LIHAT DETAIL</button>
+          </div>
+        </div>
+
+        <!-- Card 3: VG BRAKE SERVICE -->
+        <div class="vg-card" onclick="openModal('vg-brake-service')">
+          <div class="vg-card-badge badge-blue">🔵 POPULER</div>
+          <div class="vg-card-img-wrap">
+            <img src="images/vg-brake.jpg" alt="VG BRAKE SERVICE" class="vg-card-img" loading="lazy">
+          </div>
+          <div class="vg-card-body">
+            <h3 class="vg-card-title">🛑 VG BRAKE</h3>
+            <p class="vg-card-desc">Servis Sistem Rem Setel & Bersihkan.</p>
+            <div class="vg-card-meta">
+              <span class="meta-time">⏱️ 45–90 Menit</span>
+              <span class="meta-price">💰 Rp140K–Rp175K</span>
+            </div>
+          </div>
+          <div class="vg-card-footer">
+            <button class="btn btn-crimson btn-block">LIHAT DETAIL</button>
+          </div>
+        </div>
+
+        <!-- Card 4: VG OIL SERVICE -->
+        <div class="vg-card" onclick="openModal('vg-oil-service')">
+          <div class="vg-card-badge badge-green">🟢 REKOMENDASI</div>
+          <div class="vg-card-img-wrap">
+            <img src="images/vg-oil.jpg" alt="VG OIL SERVICE" class="vg-card-img" loading="lazy">
+          </div>
+          <div class="vg-card-body">
+            <h3 class="vg-card-title">🛢️ VG OIL SERVICE</h3>
+            <p class="vg-card-desc">Ganti Oli Mesin & Transmisi terjamin.</p>
+            <div class="vg-card-meta">
+              <span class="meta-time">⏱️ 15–30 Menit</span>
+              <span class="meta-price">💰 Rp50K–Rp75K</span>
+            </div>
+          </div>
+          <div class="vg-card-footer">
+            <button class="btn btn-crimson btn-block">LIHAT DETAIL</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       LAYANAN 2: LAYANAN BERDASARKAN KONDISI (GRID 3x3)
+  ========================================== -->
+  <section id="layanan-kondisi" class="section-padding bg-graphite">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Pilih Menurut Keluhan</span>
+        <h2 class="section-title">LAYANAN BERDASARKAN KONDISI MOBIL ANDA</h2>
+        <p class="section-subtitle">Temukan penanganan tepat sesuai bagian kendaraan yang membutuhkan perawatan.</p>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="filter-controls">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Cari nama layanan atau masalah mobil..." aria-label="Cari Layanan">
+        </div>
+        <div class="filter-buttons-3x3">
+          <button class="filter-btn active" data-filter="ALL">Semua</button>
+          <button class="filter-btn" data-filter="MESIN">⚙ Mesin</button>
+          <button class="filter-btn" data-filter="PELUMASAN">💧 Pelumasan</button>
+          <button class="filter-btn" data-filter="BAHAN BAKAR">⛽ Bahan Bakar</button>
+          <button class="filter-btn" data-filter="SUSPENSI">🚙 Suspensi</button>
+          <button class="filter-btn" data-filter="KEMUDI">🎯 Kemudi</button>
+          <button class="filter-btn" data-filter="REM">🛑 Rem</button>
+          <button class="filter-btn" data-filter="PENDINGIN">🌡 Pendingin</button>
+          <button class="filter-btn" data-filter="TRANSMISI">⚙ Transmisi</button>
+          <button class="filter-btn" data-filter="KELISTRIKAN MESIN">🔋 Kelistrikan</button>
+        </div>
+      </div>
+
+      <!-- Container Grid Hasil Render JavaScript -->
+      <div id="service-grid" class="kondisi-grid-3x3">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CARA KERJA (5 LANGKAH SERVIS)
+  ========================================== -->
+  <section id="cara-kerja" class="section-padding">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Alur Kerja Profesional</span>
+        <h2 class="section-title">CARA KERJA</h2>
+        <p class="section-subtitle">Servis mudah & transparan tanpa drama biaya tersembunyi.</p>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">📲</div>
+          <h3 class="step-title">Booking</h3>
+          <p class="step-desc">Pesan layanan via WA, jelaskan keluhan & atur jadwal.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">🔍</div>
+          <h3 class="step-title">Check</h3>
+          <p class="step-desc">Mekanik datang & melakukan diagnosa teliti pada komponen.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">💰</div>
+          <h3 class="step-title">Estimasi</h3>
+          <p class="step-desc">Penjelasan estimasi biaya & persetujuan dari Anda.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-icon">🔧</div>
+          <h3 class="step-title">Servis</h3>
+          <p class="step-desc">Pengerjaan profesional sesuai SOP & menjaga kebersihan.</p>
+        </div>
+
+        <div class="step-card step-card-featured">
+          <div class="step-number">5</div>
+          <div class="step-icon">✅</div>
+          <h3 class="step-title">Final Check</h3>
+          <p class="step-desc">Pengujian akhir fungsi kendaraan & siap jalan dengan aman.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       WILAYAH OPERASIONAL
+  ========================================== -->
+  <section id="area" class="section-padding bg-graphite">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Jangkauan Panggilan</span>
+        <h2 class="section-title">WILAYAH OPERASIONAL</h2>
+        <p class="section-subtitle">Layanan panggilan mekanik khusus area Palembang dan sekitarnya.</p>
+      </div>
+
+      <div class="area-container">
+        <div class="area-image-wrap">
+          <img src="images/area-map.jpg" alt="Wilayah Operasional VRRINS GARAGE" class="area-img" loading="lazy">
+        </div>
+        <div class="area-legend-box">
+          <h3 class="legend-title">Ketentuan Radius Jangkauan</h3>
+          
+          <div class="legend-item">
+            <span class="zone-badge zone-green">🟢 Zona Hijau</span>
+            <div class="zone-info">
+              <strong>0 – 8 KM</strong>
+              <p>Area servis utama gratis/biaya transportasi terjangkau.</p>
+            </div>
+          </div>
+
+          <div class="legend-item">
+            <span class="zone-badge zone-yellow">🟡 Zona Kuning</span>
+            <div class="zone-info">
+              <strong>8 – 15 KM</strong>
+              <p>Area servis tingkat menengah dengan penyesuaian biaya transport.</p>
+            </div>
+          </div>
+
+          <div class="legend-item">
+            <span class="zone-badge zone-red">🔴 Zona Merah</span>
+            <div class="zone-info">
+              <strong>> 15 KM</strong>
+              <p>Memerlukan konfirmasi ketersediaan jadwal khusus mekanik.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       KENAPA MEMILIH VRRINS GARAGE
+  ========================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="why-us-box">
+        <h2 class="section-title text-center">KENAPA MEMILIH VRRINS GARAGE?</h2>
+        <div class="why-us-grid">
+          <div class="why-item">
+            <span class="why-icon">🏠</span>
+            <h4>Servis di Rumah</h4>
+            <p>Hemat waktu, tidak perlu antre di bengkel.</p>
+          </div>
+          <div class="why-item">
+            <span class="why-icon">👨‍🔧</span>
+            <h4>Mekanik Profesional</h4>
+            <p>Berpengalaman menangani berbagai jenis mesin.</p>
+          </div>
+          <div class="why-item">
+            <span class="why-icon">🔍</span>
+            <h4>Pemeriksaan Sesuai Kondisi</h4>
+            <p>Diagnosa akurat tanpa penggantian komponen sia-sia.</p>
+          </div>
+          <div class="why-item">
+            <span class="why-icon">💵</span>
+            <h4>Harga Transparan</h4>
+            <p>Estimasi rinci disetujui sebelum pengerjaan.</p>
+          </div>
+          <div class="why-item">
+            <span class="why-icon">📲</span>
+            <h4>Booking Mudah</h4>
+            <p>Cukup percakapan singkat langsung via WhatsApp.</p>
+          </div>
+          <div class="why-item">
+            <span class="why-icon">📍</span>
+            <h4>Area Palembang</h4>
+            <p>Fokus penuh memberikan pelayanan cepat lokal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FAQ SECTION (ACCORDION)
+  ========================================== -->
+  <section id="faq" class="section-padding bg-graphite">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Pertanyaan Umum</span>
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-subtitle">Jawaban cepat untuk pertanyaan yang sering ditanyakan.</p>
+      </div>
+
+      <div class="faq-container">
+        <!-- Item 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Bagaimana cara melakukan booking mekanik panggilan?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Anda cukup menekan tombol Booking WhatsApp, memilih layanan yang diinginkan, dan mengirim pesan otomatis ke admin kami untuk penentuan jadwal.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah ada biaya transportasi tambahan untuk servis di rumah?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Biaya transportasi disesuaikan dengan zonasi jarak (Zona Hijau, Kuning, atau Merah) dari titik lokasi VRRINS GARAGE di Palembang.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Bagaimana jika membutuhkan penggantian spare part?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Mekanik kami akan menginformasikan komponen yang perlu diganti terlebih dahulu. Anda bisa menyediakan part sendiri atau meminta kami membantunya.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Metode pembayaran apa saja yang diterima?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Kami menerima pembayaran tunai (Cash) dan transfer bank/QRIS setelah seluruh pengerjaan dan Final Check selesai dilakukan.</p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah servis di VRRINS GARAGE memiliki garansi?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Ya, kami memberikan garansi pekerjaan sesuai dengan jenis pengerjaan servis yang disepakati saat estimasi pengerjaan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       KONTAK & FOOTER
+  ========================================== -->
+  <footer id="kontak" class="footer-section">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="images/logo.jpg" alt="VRRINS GARAGE Logo" class="logo-img">
+            <span class="logo-text">VRRINS<span>GARAGE</span></span>
+          </div>
+          <p class="footer-desc">
+            Dak galak ke bengkel? Pacak. Mekanik VRRINS GARAGE yang datang ke rumah! Servis mobil rumahan & mekanik panggilan terpercaya di Palembang.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Media Sosial</h4>
+          <ul class="social-links">
+            <li>
+              <a href="https://www.instagram.com/vrrinsgarage?igsh=b2c4Y3NwNmozeHMw" target="_blank" rel="noopener">
+                📷 Instagram: @vrrinsgarage
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/share/1E2hkLjaQo/" target="_blank" rel="noopener">
+                📘 Facebook: VRRINS GARAGE
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@vrrinsgarage?_r=1&_t=ZS-98Ktjip8zSe" target="_blank" rel="noopener">
+                🎵 TikTok: @vrrinsgarage
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Kontak & Jam Kerja</h4>
+          <p>📍 Area Layanan: Palembang, Sumatera Selatan</p>
+          <p>📞 WhatsApp: +62 895-6224-99262</p>
+          <p>⏰ Jam Operasional: Setiap Hari (08.00 - 17.00 WIB)</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p>Copyright © VRRINS GARAGE. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL DETAIL LAYANAN DYNAMIC
+  ========================================== -->
+  <div id="service-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close-btn" aria-label="Tutup Modal">&times;</button>
+      
+      <div class="modal-header">
+        <span id="modal-category" class="modal-badge">KATEGORI</span>
+        <h2 id="modal-title" class="modal-title">Nama Layanan</h2>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-info-bar">
+          <div class="info-box">
+            <span class="info-label">Estimasi Biaya</span>
+            <span id="modal-price" class="info-value">Rp0</span>
+          </div>
+          <div class="info-box">
+            <span class="info-label">Estimasi Waktu</span>
+            <span id="modal-duration" class="info-value">0 Menit</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h4>Deskripsi</h4>
+          <p id="modal-description">Deskripsi rinci mengenai layanan ini.</p>
+        </div>
+
+        <div class="modal-section">
+          <h4>Pekerjaan yang Dilakukan</h4>
+          <ul id="modal-pekerjaan" class="modal-list"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h4>Manfaat Perawatan</h4>
+          <ul id="modal-manfaat" class="modal-list check-list"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h4>Tidak Termasuk</h4>
+          <ul id="modal-tidak-termasuk" class="modal-list cross-list"></ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a id="modal-booking-btn" href="#" class="btn btn-wa btn-block" target="_blank" rel="noopener">
+          💬 Booking Layanan Ini via WA
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FLOATING WHATSAPP BUTTON
+  ========================================== -->
+  <a href="https://wa.me/62895622499262?text=Halo%2C%20kak.%20%F0%9F%90%8B%0ABiso%20bantu%20jadwalkan%20booking%3F%0AAku%20nak%20booking%20layanan%20servis.%0ATerima%20kasih.%20%F0%9F%99%8F" class="floating-wa" target="_blank" rel="noopener" aria-label="Chat WhatsApp VRRINS GARAGE">
+    <span class="wa-icon">💬</span>
+  </a>
+
+  <!-- JavaScript Modules -->
+  <script src="services.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
