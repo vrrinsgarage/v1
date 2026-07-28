@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0F1115">
+    <meta name="description" content="VRRINS GARAGE — Servis mobil rumahan dan mekanik panggilan khusus wilayah Palembang.">
+    <meta name="robots" content="index, follow">
+
+    <title>VRRINS GARAGE | Servis Mobil di Rumah Palembang</title>
+
+    <!--
+        ============================================================
+        VRRINS GARAGE
+        KODE 1 — INDEX.HTML
+        ============================================================
+
+        Prinsip:
+        - Mobile First
+        - Premium
+        - Dark Theme
+        - Cepat
+        - Profesional
+        - Mudah Dipahami
+
+        File yang bekerja bersama:
+        1. index.html  → struktur halaman
+        2. style.css   → seluruh tampilan
+        3. script.js   → interaksi
+        4. services.js → database layanan
+
+        Catatan:
+        - Data layanan tidak ditulis ulang di sini.
+        - services.js tetap menjadi sumber data layanan.
+        - HTML menyediakan struktur dan target elemen.
+        ============================================================
+    -->
+
+    <!-- Preconnect / Font dapat ditambahkan di sini bila diperlukan.
+         Untuk versi cepat, website tetap bisa memakai system font. -->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         ACCESSIBILITY / PROGRESS
+         ============================================================ -->
+    <a class="skip-link" href="#main-content">
+        Lewati ke konten utama
+    </a>
+
+    <div class="page-loader" id="page-loader" aria-hidden="true">
+        <div class="page-loader__logo">VRRINS GARAGE</div>
+        <div class="page-loader__bar"></div>
+    </div>
+
+
+    <!-- ============================================================
+         HEADER / NAVIGASI
+         ============================================================ -->
+    <header class="site-header" id="site-header">
+
+        <div class="container header-inner">
+
+            <a
+                href="#beranda"
+                class="brand"
+                aria-label="VRRINS GARAGE - Beranda"
+            >
+                <img
+                    src="images/logo.webp"
+                    alt="Logo VRRINS GARAGE"
+                    class="brand__logo"
+                    width="56"
+                    height="56"
+                >
+
+                <span class="brand__text">
+                    <strong>VRRINS</strong>
+                    <span>GARAGE</span>
+                </span>
+            </a>
+
+
+            <button
+                class="nav-toggle"
+                id="nav-toggle"
+                type="button"
+                aria-label="Buka menu"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <nav
+                class="main-nav"
+                id="main-navigation"
+                aria-label="Navigasi utama"
+            >
+
+                <a href="#beranda" class="nav-link active">
+                    Beranda
+                </a>
+
+                <a href="#paket-layanan" class="nav-link">
+                    Layanan
+                </a>
+
+                <a href="#harga" class="nav-link">
+                    Harga
+                </a>
+
+                <a href="#tentang-kami" class="nav-link">
+                    Tentang Kami
+                </a>
+
+                <a href="#faq" class="nav-link">
+                    FAQ
+                </a>
+
+                <a href="#kontak" class="nav-link">
+                    Kontak
+                </a>
+
+                <a
+                    href="https://wa.me/62895622499262"
+                    class="nav-booking js-whatsapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-wa-message="Halo, kak. 👋%0A%0ABiso bantu jadwalkan booking?%0A%0AAku nak booking layanan VRRINS GARAGE.%0A%0ATerima kasih. 🙏"
+                >
+                    <span aria-hidden="true">🟢</span>
+                    Booking WhatsApp
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ============================================================
+         MAIN
+         ============================================================ -->
+    <main id="main-content">
+
+
+        <!-- ========================================================
+             01. HERO SECTION
+             ======================================================== -->
+        <section
+            class="hero-section"
+            id="beranda"
+            aria-labelledby="hero-title"
+        >
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="hero-brand">
+                        <img
+                            src="images/logo.webp"
+                            alt="VRRINS GARAGE"
+                            width="96"
+                            height="96"
+                            loading="eager"
+                        >
+                    </div>
+
+                    <p class="eyebrow">
+                        SERVIS MOBIL RUMAHAN & MEKANIK PANGGILAN
+                    </p>
+
+                    <h1 id="hero-title">
+                        Booking Lewat
+                        <span class="accent-green">WhatsApp</span>,
+                        Pacak Santai di Rumah
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Dak galak ke bengkel?
+                        Pacak. Mekanik VRRINS GARAGE yang datang ke rumah!
+                    </p>
+
+                    <ul class="hero-points">
+                        <li>
+                            <span aria-hidden="true">💰</span>
+                            <span>Hargo transparan</span>
+                        </li>
+
+                        <li>
+                            <span aria-hidden="true">🔍</span>
+                            <span>Kito pacak tau penyakit mobel</span>
+                        </li>
+
+                        <li>
+                            <span aria-hidden="true">🏠</span>
+                            <span>Mobel didandani di rumah</span>
+                        </li>
+
+                        <li>
+                            <span aria-hidden="true">🚗</span>
+                            <span>Dak payah ke bengkel</span>
+                        </li>
+                    </ul>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="https://wa.me/62895622499262"
+                            class="button button--whatsapp js-whatsapp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-wa-message="Halo, kak. 👋%0A%0ABiso bantu jadwalkan booking?%0A%0AAku nak booking layanan VRRINS GARAGE.%0A%0ATerima kasih. 🙏"
+                        >
+                            <span aria-hidden="true">💬</span>
+                            Booking WhatsApp
+                        </a>
+
+                        <a
+                            href="#paket-layanan"
+                            class="button button--dark"
+                        >
+                            Lihat Layanan
+                        </a>
+
+                    </div>
+
+                    <div class="hero-trust">
+                        <span>✓ Area Palembang</span>
+                        <span>✓ Mekanik Profesional</span>
+                        <span>✓ Harga Transparan</span>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-media">
+
+                    <div class="hero-image-frame">
+                        <img
+                            src="images/hero.webp"
+                            alt="Kendaraan yang mendapatkan layanan VRRINS GARAGE"
+                            width="1536"
+                            height="1024"
+                            fetchpriority="high"
+                        >
+                    </div>
+
+                    <div class="hero-floating-card">
+                        <span class="hero-floating-card__icon">🏠</span>
+                        <div>
+                            <strong>Servis di lokasi Anda</strong>
+                            <span>Praktis tanpa perlu ke bengkel</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             02. KEUNGGULAN KAMI
+             ======================================================== -->
+        <section
+            class="section advantages-section"
+            id="keunggulan"
+            aria-labelledby="advantages-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="eyebrow">KENAPA VRRINS GARAGE?</p>
+
+                    <h2 id="advantages-title">
+                        Servis Lebih Mudah,
+                        <span class="text-accent">Lebih Transparan</span>
+                    </h2>
+
+                    <p>
+                        Kito bantu periksa kondisi mobil sesuai kebutuhan,
+                        jelaskan hasil pemeriksaan, lalu kerjakan setelah
+                        customer setuju.
+                    </p>
+                </div>
+
+
+                <div class="advantages-grid">
+
+                    <article class="advantage-card">
+                        <span class="advantage-card__icon">🧰</span>
+                        <h3>Mekanik Profesional</h3>
+                        <p>
+                            Pengerjaan dilakukan dengan prosedur kerja
+                            yang terarah dan rapi.
+                        </p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <span class="advantage-card__icon">🔍</span>
+                        <h3>Sesuai Kondisi Kendaraan</h3>
+                        <p>
+                            Pemeriksaan dilakukan berdasarkan kondisi
+                            dan gejala kendaraan.
+                        </p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <span class="advantage-card__icon">🏠</span>
+                        <h3>Servis di Rumah</h3>
+                        <p>
+                            Mekanik datang ke rumah atau lokasi customer
+                            sesuai area layanan.
+                        </p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <span class="advantage-card__icon">💰</span>
+                        <h3>Harga Transparan</h3>
+                        <p>
+                            Estimasi pekerjaan dan biaya dijelaskan
+                            sebelum pengerjaan.
+                        </p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <span class="advantage-card__icon">💬</span>
+                        <h3>Booking Mudah</h3>
+                        <p>
+                            Booking layanan dilakukan langsung melalui
+                            WhatsApp.
+                        </p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <span class="advantage-card__icon">📍</span>
+                        <h3>Area Layanan Palembang</h3>
+                        <p>
+                            Layanan mekanik panggilan untuk wilayah
+                            operasional Palembang.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             03. PAKET LAYANAN VG
+             4 KARTU — GRID 2 × 2
+             ======================================================== -->
+        <section
+            class="section packages-section"
+            id="paket-layanan"
+            aria-labelledby="packages-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading section-heading--split">
+
+                    <div>
+                        <p class="eyebrow">SUDAH TAU YANG DIBUTUHKAN?</p>
+
+                        <h2 id="packages-title">
+                            Paket Layanan <span class="text-accent">VG</span>
+                        </h2>
+
+                        <p>
+                            Pilih layanan yang sudah sesuai dengan kebutuhan
+                            mobilnyo.
+                        </p>
+                    </div>
+
+                    <span class="section-label">
+                        4 PAKET UTAMA
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="package-grid"
+                    id="vg-package-grid"
+                    aria-live="polite"
+                >
+
+                    <!-- ==================================================
+                         CARD 01 — VG CHECK
+                         ================================================== -->
+                    <article
+                        class="service-card service-card--package"
+                        data-service-id="vg-check"
+                    >
+
+                        <div class="service-card__media">
+
+                            <img
+                                src="images/vg-check.webp"
+                                alt="VG CHECK"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="service-badge service-badge--start">
+                                ⭐ MULAI DARI SINI
+                            </span>
+
+                        </div>
+
+                        <div class="service-card__body">
+
+                            <div class="service-card__heading">
+                                <span class="service-icon">🔍</span>
+
+                                <div>
+                                    <h3>VG CHECK</h3>
+                                    <p>
+                                        Pemeriksaan menyeluruh kendaraan
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="service-card__meta">
+                                <span>
+                                    ⏱ <strong data-service-duration="vg-check">
+                                        30–90 Menit
+                                    </strong>
+                                </span>
+
+                                <span>
+                                    💰 <strong data-service-price="vg-check">
+                                        Rp100K–Rp150K
+                                    </strong>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="service-card__button js-service-detail"
+                            data-service-id="vg-check"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- ==================================================
+                         CARD 02 — VG TUNE
+                         ================================================== -->
+                    <article
+                        class="service-card service-card--package"
+                        data-package="vg-tune"
+                    >
+
+                        <div class="service-card__media">
+
+                            <img
+                                src="images/vg-tune.webp"
+                                alt="VG TUNE Bensin dan Diesel"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="service-badge service-badge--best">
+                                🔥 BEST SELLER
+                            </span>
+
+                        </div>
+
+                        <div class="service-card__body">
+
+                            <div class="service-card__heading">
+                                <span class="service-icon">🔧</span>
+
+                                <div>
+                                    <h3>VG TUNE</h3>
+                                    <p>
+                                        Tune Up Mesin Bensin &amp; Diesel
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="service-card__meta">
+                                <span>
+                                    ⏱ <strong>45–150 Menit</strong>
+                                </span>
+
+                                <span>
+                                    💰 <strong>Mulai Rp150K</strong>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="service-card__button js-package-detail"
+                            data-package-id="vg-tune"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- ==================================================
+                         CARD 03 — VG BRAKE SERVICE
+                         ================================================== -->
+                    <article
+                        class="service-card service-card--package"
+                        data-service-id="vg-brake-service"
+                    >
+
+                        <div class="service-card__media">
+
+                            <img
+                                src="images/vg-brake.webp"
+                                alt="VG BRAKE SERVICE"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="service-badge service-badge--popular">
+                                🔵 POPULER
+                            </span>
+
+                        </div>
+
+                        <div class="service-card__body">
+
+                            <div class="service-card__heading">
+                                <span class="service-icon">🛑</span>
+
+                                <div>
+                                    <h3>VG BRAKE SERVICE</h3>
+                                    <p>
+                                        Servis Sistem Rem
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="service-card__meta">
+                                <span>
+                                    ⏱ <strong data-service-duration="vg-brake-service">
+                                        45–90 Menit
+                                    </strong>
+                                </span>
+
+                                <span>
+                                    💰 <strong data-service-price="vg-brake-service">
+                                        Rp140K–Rp175K
+                                    </strong>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="service-card__button js-service-detail"
+                            data-service-id="vg-brake-service"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- ==================================================
+                         CARD 04 — VG OIL SERVICE
+                         ================================================== -->
+                    <article
+                        class="service-card service-card--package"
+                        data-service-id="vg-oil-service"
+                    >
+
+                        <div class="service-card__media">
+
+                            <img
+                                src="images/vg-oil-service.webp"
+                                alt="VG OIL SERVICE"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="service-badge service-badge--recommended">
+                                💚 REKOMENDASI
+                            </span>
+
+                        </div>
+
+                        <div class="service-card__body">
+
+                            <div class="service-card__heading">
+                                <span class="service-icon">🛢️</span>
+
+                                <div>
+                                    <h3>VG OIL SERVICE</h3>
+                                    <p>
+                                        Ganti Oli Mesin &amp; Transmisi
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="service-card__meta">
+                                <span>
+                                    ⏱ <strong data-service-duration="vg-oil-service">
+                                        15–30 Menit
+                                    </strong>
+                                </span>
+
+                                <span>
+                                    💰 <strong data-service-price="vg-oil-service">
+                                        Rp50K–Rp75K
+                                    </strong>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="service-card__button js-service-detail"
+                            data-service-id="vg-oil-service"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             04. HARGA / PENJELASAN TRANSPARANSI
+             Anchor untuk menu "Harga"
+             ======================================================== -->
+        <section
+            class="section pricing-intro-section"
+            id="harga"
+            aria-labelledby="pricing-title"
+        >
+
+            <div class="container">
+
+                <div class="pricing-intro">
+
+                    <div>
+                        <p class="eyebrow">HARGA TRANSPARAN</p>
+
+                        <h2 id="pricing-title">
+                            Tau Estimasi Sebelum
+                            <span class="text-accent">Pengerjaan</span>
+                        </h2>
+                    </div>
+
+                    <p>
+                        Estimasi biaya ditampilkan berdasarkan layanan.
+                        Hasil pemeriksaan dan pekerjaan tambahan akan
+                        dijelaskan terlebih dahulu sebelum pengerjaan
+                        dilanjutkan.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             05. LAYANAN BERDASARKAN KONDISI MOBIL
+             9 KATEGORI — GRID 3 × 3
+             ======================================================== -->
+        <section
+            class="section categories-section"
+            id="kondisi-mobil"
+            aria-labelledby="categories-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        BELUM TAU MASALAHNYO?
+                    </p>
+
+                    <h2 id="categories-title">
+                        Layanan Berdasarkan
+                        <span class="text-accent">Kondisi Mobil Anda</span>
+                    </h2>
+
+                    <p>
+                        Pilih bagian mobil yang mengalami keluhan.
+                        Kito bantu arahkan ke layanan yang sesuai.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="category-grid"
+                    id="category-grid"
+                    aria-live="polite"
+                >
+
+                    <!-- 01 MESIN -->
+                    <article
+                        class="category-card"
+                        data-category="MESIN"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-mesin.webp"
+                                alt="Sistem Mesin"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--premium">
+                                🔴 PREMIUM
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>⚙️</span>
+                                <h3>Mesin</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan dan perawatan sistem mesin.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="MESIN"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 02 PELUMASAN -->
+                    <article
+                        class="category-card"
+                        data-category="PELUMASAN"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-pelumasan.webp"
+                                alt="Sistem Pelumasan"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--economy">
+                                🔵 HEMAT
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>💧</span>
+                                <h3>Pelumasan</h3>
+                            </div>
+
+                            <p>
+                                Perawatan oli dan sistem pelumasan.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="PELUMASAN"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 03 BAHAN BAKAR -->
+                    <article
+                        class="category-card"
+                        data-category="BAHAN BAKAR"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-bahan-bakar.webp"
+                                alt="Sistem Bahan Bakar"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--popular">
+                                🟠 POPULER
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>⛽</span>
+                                <h3>Bahan Bakar</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan dan perawatan sistem bahan bakar.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="BAHAN BAKAR"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 04 SUSPENSI -->
+                    <article
+                        class="category-card"
+                        data-category="SUSPENSI"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-suspensi.webp"
+                                alt="Sistem Suspensi"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--recommended">
+                                💚 REKOMENDASI
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>🚙</span>
+                                <h3>Suspensi</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan kaki-kaki dan sistem suspensi.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="SUSPENSI"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 05 KEMUDI -->
+                    <article
+                        class="category-card"
+                        data-category="KEMUDI"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-kemudi.webp"
+                                alt="Sistem Kemudi"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--popular">
+                                🟠 POPULER
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>🎯</span>
+                                <h3>Kemudi</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan sistem kemudi kendaraan.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="KEMUDI"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 06 REM -->
+                    <article
+                        class="category-card"
+                        data-category="REM"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-rem.webp"
+                                alt="Sistem Rem"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--best">
+                                🔥 BEST SELLER
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>🛑</span>
+                                <h3>Rem</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan dan perawatan sistem pengereman.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="REM"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 07 PENDINGIN -->
+                    <article
+                        class="category-card"
+                        data-category="PENDINGIN"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-pendingin.webp"
+                                alt="Sistem Pendingin Mesin"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--recommended">
+                                💚 REKOMENDASI
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>🌡️</span>
+                                <h3>Pendingin</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan sistem pendingin kendaraan.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="PENDINGIN"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 08 TRANSMISI -->
+                    <article
+                        class="category-card"
+                        data-category="TRANSMISI"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-transmisi.webp"
+                                alt="Sistem Transmisi"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--premium">
+                                🔴 PREMIUM
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>⚙️</span>
+                                <h3>Transmisi</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan dan perawatan sistem transmisi.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="TRANSMISI"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+
+                    <!-- 09 KELISTRIKAN MESIN -->
+                    <article
+                        class="category-card"
+                        data-category="KELISTRIKAN MESIN"
+                    >
+
+                        <div class="category-card__media">
+
+                            <img
+                                src="images/category-kelistrikan.webp"
+                                alt="Kelistrikan Mesin"
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge category-badge--economy">
+                                🔵 HEMAT
+                            </span>
+
+                        </div>
+
+                        <div class="category-card__content">
+
+                            <div class="category-card__title">
+                                <span>🔋</span>
+                                <h3>Kelistrikan Mesin</h3>
+                            </div>
+
+                            <p>
+                                Pemeriksaan kelistrikan dan komponen elektronik.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="category-card__button js-category-detail"
+                            data-category-id="KELISTRIKAN MESIN"
+                        >
+                            Lihat Detail
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             06. TENTANG KAMI / CARA KERJA
+             ======================================================== -->
+        <section
+            class="section process-section"
+            id="tentang-kami"
+            aria-labelledby="process-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">CARA KERJA</p>
+
+                    <h2 id="process-title">
+                        Servis Mudah &
+                        <span class="text-accent">Transparan</span>
+                    </h2>
+
+                    <p>
+                        Customer tidak hanya memanggil mekanik.
+                        Setiap pekerjaan mengikuti proses yang jelas.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+                    <article class="process-card">
+                        <span class="process-card__number">01</span>
+                        <span class="process-card__icon">📲</span>
+                        <h3>Booking</h3>
+                        <p>
+                            Pesan layanan, ceritokan keluhan, data kendaraan,
+                            dan tentukan jadwal servis.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <span class="process-card__number">02</span>
+                        <span class="process-card__icon">🔍</span>
+                        <h3>Check</h3>
+                        <p>
+                            Kendaraan diperiksa dan penyebab masalah
+                            dianalisa sebelum penggantian komponen.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <span class="process-card__number">03</span>
+                        <span class="process-card__icon">💰</span>
+                        <h3>Estimasi</h3>
+                        <p>
+                            Hasil pemeriksaan dan estimasi biaya dijelaskan
+                            sebelum customer menyetujui pekerjaan.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <span class="process-card__number">04</span>
+                        <span class="process-card__icon">🔧</span>
+                        <h3>Servis</h3>
+                        <p>
+                            Pengerjaan dilakukan sesuai layanan yang
+                            telah disetujui.
+                        </p>
+                    </article>
+
+                    <article class="process-card process-card--final">
+                        <span class="process-card__number">05</span>
+                        <span class="process-card__icon">✅</span>
+                        <h3>Final Check</h3>
+                        <p>
+                            Kendaraan diperiksa kembali dan hasil pekerjaan
+                            dijelaskan kepada customer.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             07. WILAYAH OPERASIONAL
+             ======================================================== -->
+        <section
+            class="section area-section"
+            id="wilayah-operasional"
+            aria-labelledby="area-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">WILAYAH OPERASIONAL</p>
+
+                    <h2 id="area-title">
+                        Area Layanan
+                        <span class="text-accent">VRRINS GARAGE</span>
+                    </h2>
+
+                    <p>
+                        Zona layanan dibagi berdasarkan jarak dari titik
+                        operasional VRRINS GARAGE.
+                    </p>
+
+                </div>
+
+
+                <div class="area-layout">
+
+                    <div class="area-map">
+
+                        <img
+                            src="images/area-map.webp"
+                            alt="Peta radius wilayah operasional VRRINS GARAGE"
+                            width="1000"
+                            height="1000"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="area-zones">
+
+                        <article class="area-zone area-zone--green">
+                            <span class="area-zone__dot"></span>
+
+                            <div>
+                                <span class="area-zone__label">
+                                    ZONA HIJAU
+                                </span>
+
+                                <strong>0–8 KM</strong>
+
+                                <p>
+                                    Area utama layanan.
+                                </p>
+                            </div>
+                        </article>
+
+
+                        <article class="area-zone area-zone--yellow">
+                            <span class="area-zone__dot"></span>
+
+                            <div>
+                                <span class="area-zone__label">
+                                    ZONA KUNING
+                                </span>
+
+                                <strong>8–15 KM</strong>
+
+                                <p>
+                                    Area layanan dengan penyesuaian sesuai lokasi.
+                                </p>
+                            </div>
+                        </article>
+
+
+                        <article class="area-zone area-zone--red">
+                            <span class="area-zone__dot"></span>
+
+                            <div>
+                                <span class="area-zone__label">
+                                    ZONA MERAH
+                                </span>
+
+                                <strong>&gt;15 KM</strong>
+
+                                <p>
+                                    Hubungi WhatsApp untuk konfirmasi layanan.
+                                </p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             08. KENAPA MEMILIH VRRINS GARAGE
+             ======================================================== -->
+        <section
+            class="section why-section"
+            id="kenapa-vrrins"
+            aria-labelledby="why-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">ALASAN CUSTOMER MEMILIH KAMI</p>
+
+                    <h2 id="why-title">
+                        Kenapa Memilih
+                        <span class="text-accent">VRRINS GARAGE?</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="why-grid">
+
+                    <div class="why-item">
+                        <span>🏠</span>
+                        <strong>Servis di Rumah</strong>
+                        <p>Mekanik datang ke lokasi Anda.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <span>🧰</span>
+                        <strong>Mekanik Profesional</strong>
+                        <p>Pengerjaan dengan proses yang terarah.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <span>🔍</span>
+                        <strong>Pemeriksaan Sesuai Kondisi</strong>
+                        <p>Tidak asal mengganti komponen.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <span>💰</span>
+                        <strong>Harga Transparan</strong>
+                        <p>Estimasi dijelaskan sebelum pengerjaan.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <span>💬</span>
+                        <strong>Booking Mudah</strong>
+                        <p>Booking langsung melalui WhatsApp.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <span>📍</span>
+                        <strong>Area Layanan Palembang</strong>
+                        <p>Jangkauan sesuai zona operasional.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             09. FAQ
+             ======================================================== -->
+        <section
+            class="section faq-section"
+            id="faq"
+            aria-labelledby="faq-title"
+        >
+
+            <div class="container faq-layout">
+
+                <div class="faq-intro">
+
+                    <p class="eyebrow">FAQ</p>
+
+                    <h2 id="faq-title">
+                        Pertanyaan yang
+                        <span class="text-accent">Sering Ditanyakan</span>
+                    </h2>
+
+                    <p>
+                        Masih bingung soal booking, harga, area, pembayaran,
+                        garansi, atau layanan? Cek jawaban berikut.
+                    </p>
+
+                </div>
+
+
+                <div class="faq-list">
+
+                    <!-- BOOKING -->
+                    <details class="faq-item" data-faq-category="booking">
+                        <summary>
+                            <span>Booking</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+
+                        <div class="faq-answer">
+                            <p>
+                                Booking dilakukan melalui WhatsApp.
+                                Customer dapat memilih layanan, menjelaskan
+                                keluhan kendaraan, memberikan data kendaraan,
+                                dan menentukan jadwal.
+                            </p>
+                        </div>
+                    </details>
+
+
+                    <!-- HARGA -->
+                    <details class="faq-item" data-faq-category="harga">
+                        <summary>
+                            <span>Harga</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+
+                        <div class="faq-answer">
+                            <p>
+                                Estimasi biaya ditampilkan pada detail layanan.
+                                Jika hasil pemeriksaan menunjukkan pekerjaan
+                                tambahan, biaya akan dijelaskan terlebih dahulu.
+                            </p>
+                        </div>
+                    </details>
+
+
+                    <!-- AREA -->
+                    <details class="faq-item" data-faq-category="area">
+                        <summary>
+                            <span>Area Layanan</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+
+                        <div class="faq-answer">
+                            <p>
+                                Area layanan menggunakan pembagian zona
+                                0–8 KM, 8–15 KM, dan lebih dari 15 KM.
+                                Hubungi WhatsApp untuk memastikan lokasi.
+                            </p>
+                        </div>
+                    </details>
+
+
+                    <!-- PEMBAYARAN -->
+                    <details class="faq-item" data-faq-category="pembayaran">
+                        <summary>
+                            <span>Pembayaran</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+
+                        <div class="faq-answer">
+                            <p>
+                                Detail pembayaran dapat dikonfirmasi melalui
+                                WhatsApp saat booking atau setelah pekerjaan
+                                disetujui.
+                            </p>
+                        </div>
+                    </details>
+
+
+                    <!-- GARANSI -->
+                    <details class="faq-item" data-faq-category="garansi">
+                        <summary>
+                            <span>Garansi</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+
+                        <div class="faq-answer">
+                            <p>
+                                Ketentuan garansi mengikuti jenis layanan dan
+                                pekerjaan yang dilakukan. Konfirmasi detailnya
+                                kepada VRRINS GARAGE sebelum pengerjaan.
+                            </p>
+                        </div>
+                    </details>
+
+
+                    <!-- LAYANAN -->
+                    <details class="faq-item" data-faq-category="layanan">
+                        <summary>
+                            <span>Layanan</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+
+                        <div class="faq-answer">
+                            <p>
+                                Pilihan layanan tersedia melalui Paket Layanan
+                                VG atau berdasarkan kondisi mobil Anda.
+                            </p>
+                        </div>
+                    </details>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             10. KONTAK
+             ======================================================== -->
+        <section
+            class="section contact-section"
+            id="kontak"
+            aria-labelledby="contact-title"
+        >
+
+            <div class="container">
+
+                <div class="contact-panel">
+
+                    <div class="contact-content">
+
+                        <p class="eyebrow">KONSULTASI & BOOKING</p>
+
+                        <h2 id="contact-title">
+                            Ceritokan Masalah
+                            <span class="text-accent">Mobilnyo</span>
+                        </h2>
+
+                        <p>
+                            Dak tau harus pilih layanan yang mano?
+                            Hubungi VRRINS GARAGE lewat WhatsApp.
+                        </p>
+
+                        <a
+                            href="https://wa.me/62895622499262"
+                            class="button button--whatsapp button--large js-whatsapp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-wa-message="Halo, kak. 👋%0A%0ABiso bantu jadwalkan booking?%0A%0AAku nak konsultasi masalah mobil dan booking layanan VRRINS GARAGE.%0A%0ATerima kasih. 🙏"
+                        >
+                            <span aria-hidden="true">💬</span>
+                            Konsultasi via WhatsApp
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-list">
+
+                        <a
+                            href="https://wa.me/62895622499262"
+                            class="contact-item js-whatsapp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-wa-message="Halo, kak. 👋%0A%0AAku nak konsultasi mengenai mobil aku.%0A%0ATerima kasih. 🙏"
+                        >
+                            <span class="contact-item__icon">💬</span>
+                            <span>
+                                <small>WhatsApp</small>
+                                <strong>+62 895-6224-99262</strong>
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="https://www.instagram.com/vrrinsgarage?igsh=b2c4Y3NwNmozeHMw"
+                            class="contact-item"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class="contact-item__icon">◎</span>
+                            <span>
+                                <small>Instagram</small>
+                                <strong>Vrrins garage</strong>
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="https://www.facebook.com/share/1E2hkLjaQo/"
+                            class="contact-item"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class="contact-item__icon">f</span>
+                            <span>
+                                <small>Facebook</small>
+                                <strong>Vrrins garage</strong>
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="https://www.tiktok.com/@vrrinsgarage?_r=1&_t=ZS-98Ktjip8zSe"
+                            class="contact-item"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class="contact-item__icon">♪</span>
+                            <span>
+                                <small>TikTok</small>
+                                <strong>Vrrinsgarage</strong>
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ============================================================
+         11. FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#beranda" class="brand brand--footer">
+
+                    <img
+                        src="images/logo.webp"
+                        alt="Logo VRRINS GARAGE"
+                        width="64"
+                        height="64"
+                        loading="lazy"
+                    >
+
+                    <span class="brand__text">
+                        <strong>VRRINS</strong>
+                        <span>GARAGE</span>
+                    </span>
+
+                </a>
+
+                <p>
+                    Servis mobil rumahan &amp; mekanik panggilan
+                    khusus wilayah Palembang.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Layanan</h3>
+
+                <a href="#paket-layanan">VG CHECK</a>
+                <a href="#paket-layanan">VG TUNE</a>
+                <a href="#paket-layanan">VG BRAKE SERVICE</a>
+                <a href="#paket-layanan">VG OIL SERVICE</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Informasi</h3>
+
+                <a href="#tentang-kami">Tentang Kami</a>
+                <a href="#wilayah-operasional">Wilayah Operasional</a>
+                <a href="#faq">FAQ</a>
+                <a href="#kontak">Kontak</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Kontak</h3>
+
+                <span>Palembang</span>
+                <span>Jam Operasional</span>
+
+                <a href="tel:+62895622499262">
+                    +62 895-6224-99262
+                </a>
+
+                <a
+                    href="https://wa.me/62895622499262"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <span>
+                © <span id="current-year">2026</span>
+                VRRINS GARAGE
+            </span>
+
+            <span>
+                Servis Mobil Rumahan &amp; Mekanik Panggilan
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ============================================================
+         FLOATING WHATSAPP
+         ============================================================ -->
+    <a
+        href="https://wa.me/62895622499262"
+        class="floating-whatsapp js-whatsapp"
+        id="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Booking melalui WhatsApp"
+        data-wa-message="Halo, kak. 👋%0A%0ABiso bantu jadwalkan booking?%0A%0AAku nak booking layanan VRRINS GARAGE.%0A%0ATerima kasih. 🙏"
+    >
+        <span class="floating-whatsapp__icon">💬</span>
+        <span class="floating-whatsapp__text">
+            Booking WhatsApp
+        </span>
+    </a>
+
+
+    <!-- ============================================================
+         NEW POPUP SYSTEM — FINAL STRUCTURE
+         1. Paket Perawatan VG
+         2. VG Tune → Bensin/Diesel → Paket
+         3. Kondisi Mobil → Kategori → Subkategori
+         4. Detail → WhatsApp otomatis
+         ============================================================ -->
+    <div class="vg-modal" id="vg-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vg-modal-title">
+        <div class="vg-modal__backdrop" data-popup-close></div>
+        <div class="vg-modal__dialog">
+            <button class="vg-modal__close" type="button" aria-label="Tutup" data-popup-close>×</button>
+            <div class="vg-modal__content" id="vg-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TOAST / NOTIFICATION
+         ============================================================ -->
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+    >
+        <span class="toast__icon">✓</span>
+        <span class="toast__message">
+            Berhasil
+        </span>
+    </div>
+
+
+    <!-- ============================================================
+         SCRIPT
+         Urutan:
+         services.js → data layanan
+         script.js   → interaksi website
+         ============================================================ -->
+    <script src="services.js" defer></script>
+    <script src="popup.js" defer></script>
+    <script src="bootstrap.js" defer></script>
+
+</body>
+</html>
