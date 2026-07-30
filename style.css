@@ -475,40 +475,4 @@ body{background:#050505}
     min-height: 48px;
   }
 }
-
-
-/* ===== Floating Booking icon: only this control is replaced ===== */
-.floating-whatsapp__button {
-  width:48px !important;
-  height:48px !important;
-  min-width:48px !important;
-  min-height:48px !important;
-  padding:0 !important;
-  border:0 !important;
-  border-radius:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  display:flex !important;
-  align-items:center;
-  justify-content:center;
-  overflow:visible !important;
-  text-indent:0 !important;
-}
-.floating-whatsapp__button img {
-  display:block;
-  width:48px;
-  height:48px;
-  object-fit:contain;
-  flex:none;
-}
-@media (max-width:800px) {
-  .floating-whatsapp {
-    display:block !important;
-  }
-  .floating-whatsapp__button {
-    width:48px !important;
-    height:48px !important;
-    min-width:48px !important;
-    min-height:48px !important;
-  }
-}
+\n\n/* ===== FLOATING BOOKING ICON — ONLY THIS CONTROL ===== */\n.floating-whatsapp__button{\n  width:72px !important;\n  height:72px !important;\n  min-height:72px !important;\n  padding:0 !important;\n  border:0 !important;\n  border-radius:0 !important;\n  background-color:transparent !important;\n  background-image:url("booking-icon-transparent.webp") !important;\n  background-repeat:no-repeat !important;\n  background-position:center !important;\n  background-size:contain !important;\n  box-shadow:none !important;\n  color:transparent !important;\n  overflow:hidden !important;\n  text-indent:-9999px;\n  display:block !important;\n}\n.floating-whatsapp__button .wa-icon,\n.floating-whatsapp__button > span:last-child{display:none !important;}\n@media (max-width:800px){\n  .floating-whatsapp{display:block !important;right:16px !important;bottom:16px !important;}\n  .floating-whatsapp__button{width:72px !important;height:72px !important;min-height:72px !important;}\n}\n
