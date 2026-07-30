@@ -374,59 +374,103 @@ body{background:#050505}
   }
 }
 
-/* VG BOOKING replacement — visual-only CTA treatment. Existing links/actions are preserved. */
-a.nav-booking,
-a.button--whatsapp.js-whatsapp[data-wa-message*="booking"],
-.floating-whatsapp__button.js-whatsapp,
-.vg-popup-button {
-  background-image: url("images/vg-booking.webp") !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-size: cover !important;
-  color: transparent !important;
-  border: 0 !important;
-  border-radius: 14px !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  overflow: hidden !important;
+
+/* =========================================================
+   VG BOOKING — single visual asset
+   Only Booking controls are restyled; existing WhatsApp links
+   and all other UI remain unchanged.
+   ========================================================= */
+.nav-booking,
+.hero-actions .button--whatsapp,
+.floating-whatsapp__button,
+.vg-wa-button {
+  background-image: url("images/vg-booking.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  color: transparent;
+  overflow: hidden;
+  text-indent: -9999px;
+  box-sizing: border-box;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-a.nav-booking,
-a.button--whatsapp.js-whatsapp[data-wa-message*="booking"],
-.floating-whatsapp__button.js-whatsapp {
-  min-height: 50px !important;
-  height: 50px !important;
-  padding: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+.nav-booking {
+  width: 150px;
+  height: 38px;
+  min-height: 38px;
+  border-radius: 12px;
 }
 
-a.nav-booking .wa-icon,
-a.button--whatsapp.js-whatsapp[data-wa-message*="booking"] .wa-icon,
-.floating-whatsapp__button.js-whatsapp .wa-icon,
-a.nav-booking > span:not(.wa-icon),
-a.button--whatsapp.js-whatsapp[data-wa-message*="booking"] > span:not(.wa-icon),
-.floating-whatsapp__button.js-whatsapp > span:not(.wa-icon) {
+.hero-actions .button--whatsapp {
+  width: 220px;
+  height: 48px;
+  min-height: 48px;
+  border-radius: 14px;
+}
+
+.floating-whatsapp__button {
+  width: 220px;
+  height: 48px;
+  min-height: 48px;
+  border-radius: 14px;
+}
+
+.vg-wa-button {
+  width: 220px;
+  height: 50px;
+  min-height: 50px;
+  margin: 24px auto 0;
+  border-radius: 14px;
+  display: block;
+}
+
+.nav-booking .wa-icon,
+.hero-actions .button--whatsapp .wa-icon,
+.floating-whatsapp__button .wa-icon,
+.vg-wa-button .wa-icon,
+.nav-booking span,
+.hero-actions .button--whatsapp span,
+.floating-whatsapp__button span,
+.vg-wa-button span {
   display: none !important;
 }
 
-.vg-popup-button {
-  height: 50px !important;
-  min-width: 0 !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin-top: 16px !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
+@media (min-width: 801px) {
+  .hero-actions .button--whatsapp {
+    width: 230px;
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .floating-whatsapp__button {
+    width: 230px;
+    height: 50px;
+    min-height: 50px;
+  }
 }
 
 @media (max-width: 800px) {
-  a.nav-booking,
-  a.button--whatsapp.js-whatsapp[data-wa-message*="booking"],
-  .floating-whatsapp__button.js-whatsapp,
-  .vg-popup-button {
-    height: 48px !important;
-    min-height: 48px !important;
+  .nav-booking {
+    width: 145px;
+    height: 38px;
+    min-height: 38px;
+  }
+
+  .hero-actions .button--whatsapp {
+    width: 220px;
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .vg-wa-button {
+    width: 220px;
+    height: 48px;
+    min-height: 48px;
   }
 }
