@@ -475,3 +475,40 @@ body{background:#050505}
     min-height: 48px;
   }
 }
+
+
+/* ===== Floating Booking icon: only this control is replaced ===== */
+.floating-whatsapp__button {
+  width:48px !important;
+  height:48px !important;
+  min-width:48px !important;
+  min-height:48px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  overflow:visible !important;
+  text-indent:0 !important;
+}
+.floating-whatsapp__button img {
+  display:block;
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  flex:none;
+}
+@media (max-width:800px) {
+  .floating-whatsapp {
+    display:block !important;
+  }
+  .floating-whatsapp__button {
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+  }
+}
