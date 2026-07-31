@@ -283,5 +283,27 @@
 <script src="services.js" defer></script>
 <script src="popup.js" defer></script>
 <script src="bootstrap.js" defer></script>
+<script>
+(function(){
+  function alignFloatingBooking(){
+    if (window.innerWidth > 800) return;
+    var target = document.querySelector('.hero-actions .button--whatsapp');
+    var floating = document.querySelector('.floating-whatsapp');
+    if (!target || !floating) return;
+    var rect = target.getBoundingClientRect();
+    var buttonHeight = floating.offsetHeight || 72;
+    var top = rect.top + (rect.height - buttonHeight) / 2;
+    floating.style.top = Math.round(top) + 'px';
+    floating.style.bottom = 'auto';
+    floating.style.right = '12px';
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', alignFloatingBooking);
+  } else {
+    alignFloatingBooking();
+  }
+  window.addEventListener('resize', alignFloatingBooking);
+})();
+</script>
 </body>
 </html>
