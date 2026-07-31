@@ -286,34 +286,36 @@
 
 <script>
 (function () {
-  function alignFloatingBooking() {
+  function syncFloatingBooking() {
     var anchor = document.querySelector('.hero-actions .button--whatsapp');
     var floating = document.querySelector('.floating-whatsapp');
     if (!anchor || !floating) return;
 
-    /* Capture the hero VG BOOKING position once per viewport layout.
-       The floating button then remains fixed at that screen position. */
+    /*
+       Capture the VG BOOKING position from the top of the page, not from
+       the current scroll position. This keeps BOOK NOW fixed at the same
+       screen position while the page is scrolled.
+    */
     var rect = anchor.getBoundingClientRect();
-    var size = window.innerWidth >= 801 ? 110 : 72;
-    var top = rect.top + (rect.height / 2) - (size / 2);
-    var minTop = 8;
-    var maxTop = window.innerHeight - size - 8;
-    top = Math.max(minTop, Math.min(top, maxTop));
+    var anchorDocumentTop = rect.top + window.pageYOffset;
+    var height = floating.getBoundingClientRect().height || 72;
+    var top = anchorDocumentTop + (rect.height / 2) - (height / 2);
 
-    document.documentElement.style.setProperty('--vg-floating-top', Math.round(top) + 'px');
+    floating.style.setProperty('top', Math.round(top) + 'px', 'important');
+    floating.style.setProperty('bottom', 'auto', 'important');
+    floating.style.setProperty('right', '0px', 'important');
   }
 
-  function initFloatingBooking() {
-    requestAnimationFrame(alignFloatingBooking);
-    window.addEventListener('resize', function () {
-      requestAnimationFrame(alignFloatingBooking);
-    }, { passive: true });
+  function init() {
+    syncFloatingBooking();
+    window.addEventListener('resize', syncFloatingBooking, { passive: true });
+    window.addEventListener('load', syncFloatingBooking, { once: true });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFloatingBooking, { once: true });
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    initFloatingBooking();
+    init();
   }
 })();
 </script>
