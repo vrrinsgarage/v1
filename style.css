@@ -581,11 +581,3 @@ overflow:hidden!important;
 @media(min-width:801px){
 .floating-whatsapp{right:20px!important;bottom:80px!important;}
 }
-
-/* Mobile floating BOOK NOW: position only; size/function unchanged. */
-@media (max-width:800px){
-  .floating-whatsapp{
-    right:12px!important;
-    bottom:auto!important;
-  }
-}

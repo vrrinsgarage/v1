@@ -283,26 +283,34 @@
 <script src="services.js" defer></script>
 <script src="popup.js" defer></script>
 <script src="bootstrap.js" defer></script>
+
 <script>
-(function(){
-  function alignFloatingBooking(){
-    if (window.innerWidth > 800) return;
-    var target = document.querySelector('.hero-actions .button--whatsapp');
+(function () {
+  function syncFloatingBooking() {
+    var anchor = document.querySelector('.hero-actions .button--whatsapp');
     var floating = document.querySelector('.floating-whatsapp');
-    if (!target || !floating) return;
-    var rect = target.getBoundingClientRect();
-    var buttonHeight = floating.offsetHeight || 72;
-    var top = rect.top + (rect.height - buttonHeight) / 2;
-    floating.style.top = Math.round(top) + 'px';
-    floating.style.bottom = 'auto';
-    floating.style.right = '12px';
+    if (!anchor || !floating) return;
+
+    var rect = anchor.getBoundingClientRect();
+    var height = floating.getBoundingClientRect().height || 72;
+    var top = rect.top + (rect.height / 2) - (height / 2);
+
+    floating.style.setProperty('top', Math.round(top) + 'px', 'important');
+    floating.style.setProperty('bottom', 'auto', 'important');
+    floating.style.setProperty('right', '0px', 'important');
   }
+
+  function init() {
+    syncFloatingBooking();
+    window.addEventListener('resize', syncFloatingBooking, { passive: true });
+    window.addEventListener('load', syncFloatingBooking, { once: true });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', alignFloatingBooking);
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    alignFloatingBooking();
+    init();
   }
-  window.addEventListener('resize', alignFloatingBooking);
 })();
 </script>
 </body>
