@@ -534,7 +534,25 @@ body{background:#050505}
 }
 
 
-/* Modified floating button */
-.floating-whatsapp{position:fixed;right:20px;top:60%;transform:translateY(-50%);z-index:9999;}
-.floating-whatsapp__button{display:flex;justify-content:center;align-items:center;width:68px!important;height:68px!important;min-height:68px;border-radius:50%;padding:0;overflow:hidden;}
-.floating-whatsapp__button img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+/* Floating Booking */
+.floating-booking{
+position:fixed;
+right:20px;
+top:60%;
+width:80px;
+height:80px;
+border-radius:50%;
+box-shadow:0 8px 24px rgba(0,0,0,.25);
+z-index:9999;
+overflow:hidden;
+}
+.floating-booking img{width:100%;height:100%;object-fit:contain;}
+@media(max-width:768px){
+.floating-booking{
+width:72px;
+height:72px;
+right:20px;
+top:auto;
+bottom:80px;
+}
+}
