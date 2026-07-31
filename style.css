@@ -581,3 +581,13 @@ overflow:hidden!important;
 @media(min-width:801px){
 .floating-whatsapp{right:20px!important;bottom:80px!important;}
 }
+
+/* FINAL MOBILE POSITION — booking floating dipindahkan ke posisi lingkaran oranye.
+   Ukuran, tampilan, dan elemen lain TIDAK diubah. */
+@media (max-width: 800px) {
+  .floating-whatsapp {
+    right: 48px !important;
+    bottom: auto !important;
+    top: 66% !important;
+  }
+}
