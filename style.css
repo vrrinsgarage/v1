@@ -558,17 +558,14 @@ bottom:80px;
 }
 
 
-/* Floating Booking Override — MOBILE POSITION ONLY */
+/* Floating Booking Override */
 .floating-whatsapp{
 position:fixed!important;
-right:14px!important;
-top:57vh!important;
-bottom:auto!important;
+right:20px!important;
+bottom:80px!important;
+top:auto!important;
 z-index:9999!important;
 }
-
-/* Keep the existing floating button size/design exactly as-is. */
-@media(max-width:800px){
 .floating-whatsapp__button{
 width:72px!important;
 height:72px!important;
@@ -581,8 +578,15 @@ box-shadow:0 8px 24px rgba(0,0,0,.25)!important;
 overflow:hidden!important;
 }
 .floating-whatsapp__button img{width:100%!important;height:100%!important;object-fit:contain!important;}
+@media(min-width:801px){
+.floating-whatsapp{right:20px!important;bottom:80px!important;}
 }
 
-@media(min-width:801px){
-.floating-whatsapp{right:20px!important;bottom:80px!important;top:auto!important;}
+/* FINAL MOBILE FLOATING BOOKING POSITION — position only */
+@media (max-width: 800px) {
+  .floating-whatsapp {
+    right: 14px !important;
+    top: 51.5vh !important;
+    bottom: auto !important;
+  }
 }
