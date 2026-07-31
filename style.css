@@ -28,7 +28,7 @@ button{cursor:pointer}
 .main-nav{margin-left:auto;display:flex;align-items:center;gap:22px}
 .nav-link{font-size:12px;font-weight:700;color:#c9c9c9;position:relative;padding:29px 0}
 .nav-link:hover,.nav-link.active{color:#fff}
-.nav-link.active:after{content:"";position:absolute;left:0;right:0;bottom: 170px;height:2px;background:var(--red)}
+.nav-link.active:after{content:"";position:absolute;left:0;right:0;bottom:20px;height:2px;background:var(--red)}
 .nav-booking{display:inline-flex;align-items:center;gap:8px;padding:11px 14px;border-radius:10px;background:var(--green);color:#001b0b;font-size:11px;font-weight:900;white-space:nowrap}
 .nav-toggle{display:none;margin-left:auto;background:none;border:0;padding:8px}
 .nav-toggle span{display:block;width:24px;height:2px;background:#fff;margin:5px 0}
@@ -581,7 +581,3 @@ overflow:hidden!important;
 @media(min-width:801px){
 .floating-whatsapp{right:20px!important;bottom:80px!important;}
 }
-
-
-body{display:flex;justify-content:center;background:#000;}
-.site-wrapper{width:100%;max-width:430px;min-width:430px;margin:0 auto;overflow:hidden;}
