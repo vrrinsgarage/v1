@@ -532,3 +532,9 @@ body{background:#050505}
     height: 165px;
   }
 }
+
+
+/* Modified floating button */
+.floating-whatsapp{position:fixed;right:20px;top:60%;transform:translateY(-50%);z-index:9999;}
+.floating-whatsapp__button{display:flex;justify-content:center;align-items:center;width:68px!important;height:68px!important;min-height:68px;border-radius:50%;padding:0;overflow:hidden;}
+.floating-whatsapp__button img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
