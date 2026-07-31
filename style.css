@@ -360,6 +360,8 @@ body{background:#050505}
 
 
 @media (max-width:768px){
+.floating-whatsapp img{width:68px;height:68px;}
+
   .system-card .detail-btn,
   .system-card button{
     width:77px;
