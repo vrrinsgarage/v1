@@ -581,3 +581,5 @@ overflow:hidden!important;
 @media(min-width:801px){
 .floating-whatsapp{right:20px!important;bottom:80px!important;}
 }
+
+body.popup-open .floating-whatsapp{display:none!important;}
