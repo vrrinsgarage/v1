@@ -75,7 +75,27 @@ const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidd
     const excluded=arr(s.tidakTermasuk).map(x=>`<li>${esc(x)}</li>`).join('');
     const note=s.catatan||'Estimasi biaya dapat berubah sesuai kondisi kendaraan. Pekerjaan tambahan akan dikonfirmasi terlebih dahulu.';
     const gallery=[1,2,3].map(n=>image(`images/gallery/${s.id}-${n}.webp`,`${s.nama} ${n}`)).join('');
-    const msg=`Halo, kak. 👋\n\nBiso bantu jadwalkan booking?\n\nAku nak booking layanan ${s.nama}.\n\nTerima kasih. 🙏`;
+    const msg=`Halo kak 👋
+
+Biso bantu booking layanan ${s.nama}.
+
+Boleh isi data mobilnyo dulu, biar kami biso cek ketersediaan mekanik dan jadwalnyo:
+
+👤 Nama:
+🚗 Merek & tipe:
+🔢 No. plat:
+📅 Tahun:
+⛽ Bensin / Diesel:
+🔧 Keluhan:
+📍 Lokasi servis:
+📅 Rencana hari & jam:
+
+Kalau sudah diisi, tinggal kirim ke kami ya kak 🙏
+
+Nanti kami cek dulu ketersediaan mekanik dan jadwalnyo.
+Kalau sudah cocok, kami kabari kembali.
+
+Terima kasih sudah menghubungi VRRINS GARAGE 🔧🚗`;
     return `${head(s.nama,s.kategori)}${back(backAction)}<div class="vg-detail-media">${image(`images/services/${s.id}.webp`,s.nama)}</div><div class="vg-detail-head"><span class="vg-popup-label">${esc(s.kategori)}</span><h3>${esc(s.nama)}</h3><p>${esc(s.deskripsi||'')}</p></div><div class="vg-detail-stats"><div><small>Estimasi Biaya</small><strong>${esc(s.harga||'-')}</strong></div><div><small>Estimasi Waktu</small><strong>${esc(s.durasi||'-')}</strong></div></div><div class="vg-detail-section"><h4>PEKERJAAN YANG DILAKUKAN</h4><ul>${work||'<li>Disesuaikan berdasarkan hasil pemeriksaan.</li>'}</ul></div><div class="vg-detail-section"><h4>YANG TIDAK TERMASUK</h4><ul class="is-excluded">${excluded||'<li>Sparepart/material pengganti.</li>'}</ul></div><div class="vg-detail-section"><h4>CATATAN</h4><p>${esc(note)}</p></div><div class="vg-gallery"><h4>GALERI HASIL PEKERJAAN</h4><div class="vg-gallery-grid">${gallery}</div></div><a class="vg-wa-button" target="_blank" rel="noopener" href="${WA_BASE}?text=${encodeURIComponent(msg)}"><span class="wa-icon"></span> BOOKING WHATSAPP</a>`;
   }
   function routeService(id,backAction='package-root'){open(renderService(id,backAction))}
