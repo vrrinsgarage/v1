@@ -113,7 +113,16 @@ Terima kasih sudah menghubungi VRRINS GARAGE 🔧🚗`;
     if(a.startsWith('service:')){const parts=a.split(':');const id=parts[1];let backAction='package-root';if(parts[2]==='category')backAction=`category:${parts.slice(3).join(':')}`;else if(id.includes('tune-')||id.includes('addon-'))backAction=id.includes('diesel')||id.includes('purging')?'tune:diesel':'tune:bensin';return routeService(id,backAction)}
   });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()});
-  document.querySelectorAll('.js-whatsapp').forEach(a=>a.addEventListener('click',()=>{const m=a.dataset.waMessage;if(m)a.href=`${WA_BASE}?text=${encodeURIComponent(m)}`}));
+  document.querySelectorAll('.js-whatsapp').forEach(a=>{
+    const m=a.dataset.waMessage;
+    if(!m)return;
+    const url=`${WA_BASE}?text=${encodeURIComponent(m)}`;
+    a.href=url;
+    a.addEventListener('click',e=>{
+      // Ensure the final URL is already present before browser navigation.
+      a.href=url;
+    });
+  });
   window.addEventListener('popstate',()=>{if(popupHistoryActive&&modal.classList.contains('is-open'))close();});
   window.VGPopup={openPackage:()=>open(renderPackageRoot()),openSystem:()=>open(renderSystemRoot()),openService:(id)=>{const s=find(id); if(!s)return; const backAction=(s.kategori==='VG TUNE'||s.kategori==='VG ADD-ON')?(String(id).includes('diesel')||String(id).includes('purging')?'tune:diesel':'tune:bensin'):(s.kategori==='VG CHECK'||s.kategori==='VG BRAKE SERVICE'||s.kategori==='VG OIL SERVICE'?'package-root':`category:${s.kategori}`); routeService(id,backAction);},close};
 })();
