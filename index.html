@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#050505">
   <meta name="description" content="VRRINS GARAGE — servis mobil rumahan dan mekanik panggilan khusus wilayah Palembang.">
   <title>VRRINS GARAGE | Servis Mobil di Rumah Palembang</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-option2.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -280,7 +280,7 @@
   <div class="container footer-bottom"><span>© 2026 VRRINS GARAGE. All Rights Reserved.</span><span>Servis mudah • Transparan • Profesional</span></div>
 </footer>
 
-<div class="floating-whatsapp">
+<div class="floating-whatsapp" id="vg-floating-booking-root" data-floating-booking="isolated">
   <a class="floating-whatsapp__button js-whatsapp" href="https://wa.me/62895622499262?text=Halo%2C%20kak.%20%F0%9F%91%8B%0A%0ABiso%20bantu%20jadwalkan%20booking%3F" target="_blank" rel="noopener" aria-label="Booking VG via WhatsApp" data-wa-message="Halo, kak. 👋&#10;&#10;Biso bantu jadwalkan booking?">
     <img src="images/book-now.webp" alt="Booking VG" width="80" height="80">
   </a>
@@ -300,150 +300,111 @@
 <script src="bootstrap.js" defer></script>
 
 
-<style id="floating-booking-alignment-test">
-/*
-  OPTION LOCK TEST
-  - BOOK NOW is hidden until its first position is calculated.
-  - The calculated top is written directly to the floating element.
-  - Opening/closing popup does NOT recalculate the position.
-  - Scrolling does NOT recalculate the position.
-  - Only a real viewport-width change recalculates it.
-*/
-.floating-whatsapp{
-  position:fixed!important;
-  top:0!important;
-  bottom:auto!important;
-  left:auto!important;
-  right:0!important;
-  z-index:99999!important;
-  display:block!important;
-  visibility:hidden!important;
-  opacity:0!important;
-  pointer-events:none!important;
-  margin:0!important;
+<style id="vg-floating-booking-option2">
+/* OPTION 2: BOOK NOW berdiri sendiri di luar Header/Hero/Menu/Popup.
+   Posisi hanya dihitung sekali saat halaman siap, lalu dikunci. */
+#vg-floating-booking-root {
+  position: fixed !important;
+  top: 0 !important;
+  right: 20px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 99999 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
-
-@media(max-width:800px){
-  .floating-whatsapp{right:0!important;}
+#vg-floating-booking-root .floating-whatsapp__button {
+  display: flex !important;
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
-
-@media(min-width:801px){
-  .floating-whatsapp{right:20px!important;}
+#vg-floating-booking-root .floating-whatsapp__button img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
 }
-
-/* The popup itself may hide the floating button while open.
-   Its last calculated position remains stored inline. */
+@media (max-width: 800px) {
+  #vg-floating-booking-root { right: 0 !important; }
+}
+@media (min-width: 801px) {
+  #vg-floating-booking-root { right: 20px !important; }
+}
 </style>
-
 <script>
-(function(){
+(function () {
   'use strict';
+  const anchor = document.querySelector('.hero-actions .button--whatsapp');
+  const floating = document.getElementById('vg-floating-booking-root');
+  if (!anchor || !floating) return;
 
-  var anchorSelector='.hero-actions .button--whatsapp';
-  var floatingSelector='.floating-whatsapp';
-  var anchor=null;
-  var floating=null;
-  var lastWidth=window.innerWidth;
-  var aligned=false;
-  var timer=0;
+  let lastWidth = window.innerWidth;
+  let raf = 0;
 
-  function findElements(){
-    anchor=document.querySelector(anchorSelector);
-    floating=document.querySelector(floatingSelector);
-    return !!(anchor && floating);
+  function alignOnce() {
+    const rect = anchor.getBoundingClientRect();
+    const h = floating.offsetHeight || 80;
+    const top = Math.max(0, Math.min(
+      rect.top + rect.height / 2 - h / 2,
+      window.innerHeight - h
+    ));
+    floating.style.setProperty('top', Math.round(top) + 'px', 'important');
+    floating.style.setProperty('visibility', 'visible', 'important');
+    floating.style.setProperty('opacity', '1', 'important');
+    floating.style.setProperty('pointer-events', 'auto', 'important');
   }
 
-  function alignOnce(){
-    if(!findElements()) return;
-
-    /*
-      LOCK RULE:
-      If the popup is open, do absolutely nothing.
-      This prevents popup-related viewport/layout changes from
-      moving BOOK NOW to the top.
-    */
-    if(document.body.classList.contains('popup-open')){
-      return;
-    }
-
-    var rect=anchor.getBoundingClientRect();
-    var h=floating.offsetHeight || 80;
-
-    var top=rect.top + (rect.height/2) - (h/2);
-    var maxTop=Math.max(0, window.innerHeight-h);
-    top=Math.max(0, Math.min(top, maxTop));
-
-    /*
-      Direct inline !important wins over the old stylesheet rules.
-      The final position is stored on BOOK NOW itself, not in a CSS
-      custom property that another stylesheet can accidentally override.
-    */
-    floating.style.setProperty('top', Math.round(top)+'px', 'important');
-    floating.style.setProperty('bottom','auto','important');
-
-    if(window.innerWidth <= 800){
-      floating.style.setProperty('right','0px','important');
-    }else{
-      floating.style.setProperty('right','20px','important');
-    }
-
-    floating.style.setProperty('visibility','visible','important');
-    floating.style.setProperty('opacity','1','important');
-    floating.style.setProperty('pointer-events','auto','important');
-
-    aligned=true;
-  }
-
-  function initialAlign(){
-    if(!findElements()) return;
-
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        alignOnce();
-      });
+  function scheduleAlign() {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () {
+      requestAnimationFrame(alignOnce);
     });
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initialAlign, {once:true});
-  }else{
-    initialAlign();
+  function initialAlign() {
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(scheduleAlign).catch(scheduleAlign);
+    } else {
+      scheduleAlign();
+    }
+    const img = floating.querySelector('img');
+    if (img && !img.complete) img.addEventListener('load', scheduleAlign, { once: true });
   }
 
-  /*
-    Do not use scroll.
-    Do not use generic layout observers.
-    Resize is accepted only when the actual viewport WIDTH changes.
-    This deliberately ignores popup-induced height/scrollbar changes
-    as long as the popup keeps the same viewport width.
-  */
-  window.addEventListener('resize', function(){
-    var width=window.innerWidth;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialAlign, { once: true });
+  } else {
+    initialAlign();
+  }
+  window.addEventListener('load', initialAlign, { once: true, passive: true });
 
-    if(width === lastWidth) return;
-    lastWidth=width;
+  /* Tidak ada listener scroll. Hanya perubahan LEBA R viewport yang dihitung ulang. */
+  window.addEventListener('resize', function () {
+    const width = window.innerWidth;
+    /* Abaikan perubahan kecil akibat scrollbar/popup/address bar. */
+    if (Math.abs(width - lastWidth) < 100) return;
+    lastWidth = width;
+    scheduleAlign();
+  }, { passive: true });
 
-    if(document.body.classList.contains('popup-open')){
-      return;
-    }
-
-    if(timer) clearTimeout(timer);
-    timer=setTimeout(function(){
-      alignOnce();
-    },80);
-  }, {passive:true});
-
-  window.addEventListener('orientationchange', function(){
-    if(document.body.classList.contains('popup-open')) return;
-
-    lastWidth=window.innerWidth;
-
-    if(timer) clearTimeout(timer);
-    timer=setTimeout(function(){
-      alignOnce();
-    },250);
-  }, {passive:true});
-
+  window.addEventListener('orientationchange', function () {
+    lastWidth = window.innerWidth;
+    setTimeout(scheduleAlign, 250);
+  }, { passive: true });
 })();
 </script>
 </body>
