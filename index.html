@@ -301,19 +301,26 @@
 
 
 <style id="floating-booking-alignment-test">
-/* V7 — Option 2
-   Initial position is resolved before BOOK NOW is revealed.
-   No fallback position is ever visible. */
+/*
+  OPTION LOCK TEST
+  - BOOK NOW is hidden until its first position is calculated.
+  - The calculated top is written directly to the floating element.
+  - Opening/closing popup does NOT recalculate the position.
+  - Scrolling does NOT recalculate the position.
+  - Only a real viewport-width change recalculates it.
+*/
 .floating-whatsapp{
   position:fixed!important;
-  top:var(--vg-booking-floating-top, 0px)!important;
+  top:0!important;
   bottom:auto!important;
+  left:auto!important;
+  right:0!important;
   z-index:99999!important;
   display:block!important;
   visibility:hidden!important;
   opacity:0!important;
-  margin:0!important;
   pointer-events:none!important;
+  margin:0!important;
 }
 
 @media(max-width:800px){
@@ -323,104 +330,119 @@
 @media(min-width:801px){
   .floating-whatsapp{right:20px!important;}
 }
+
+/* The popup itself may hide the floating button while open.
+   Its last calculated position remains stored inline. */
 </style>
 
 <script>
 (function(){
   'use strict';
 
-  const booking=document.querySelector('.hero-actions .button--whatsapp');
-  const floating=document.querySelector('.floating-whatsapp');
-  if(!booking || !floating) return;
+  var anchorSelector='.hero-actions .button--whatsapp';
+  var floatingSelector='.floating-whatsapp';
+  var anchor=null;
+  var floating=null;
+  var lastWidth=window.innerWidth;
+  var aligned=false;
+  var timer=0;
 
-  let lastWidth=window.innerWidth;
-  let raf=0;
-  let revealed=false;
+  function findElements(){
+    anchor=document.querySelector(anchorSelector);
+    floating=document.querySelector(floatingSelector);
+    return !!(anchor && floating);
+  }
 
-  function calculateAndReveal(){
-    cancelAnimationFrame(raf);
+  function alignOnce(){
+    if(!findElements()) return;
 
-    raf=requestAnimationFrame(function(){
+    /*
+      LOCK RULE:
+      If the popup is open, do absolutely nothing.
+      This prevents popup-related viewport/layout changes from
+      moving BOOK NOW to the top.
+    */
+    if(document.body.classList.contains('popup-open')){
+      return;
+    }
+
+    var rect=anchor.getBoundingClientRect();
+    var h=floating.offsetHeight || 80;
+
+    var top=rect.top + (rect.height/2) - (h/2);
+    var maxTop=Math.max(0, window.innerHeight-h);
+    top=Math.max(0, Math.min(top, maxTop));
+
+    /*
+      Direct inline !important wins over the old stylesheet rules.
+      The final position is stored on BOOK NOW itself, not in a CSS
+      custom property that another stylesheet can accidentally override.
+    */
+    floating.style.setProperty('top', Math.round(top)+'px', 'important');
+    floating.style.setProperty('bottom','auto','important');
+
+    if(window.innerWidth <= 800){
+      floating.style.setProperty('right','0px','important');
+    }else{
+      floating.style.setProperty('right','20px','important');
+    }
+
+    floating.style.setProperty('visibility','visible','important');
+    floating.style.setProperty('opacity','1','important');
+    floating.style.setProperty('pointer-events','auto','important');
+
+    aligned=true;
+  }
+
+  function initialAlign(){
+    if(!findElements()) return;
+
+    requestAnimationFrame(function(){
       requestAnimationFrame(function(){
-
-        const bookingRect=booking.getBoundingClientRect();
-        const floatingHeight=floating.getBoundingClientRect().height || 135;
-
-        const centerY=bookingRect.top + (bookingRect.height / 2);
-        const top=Math.max(0, centerY - (floatingHeight / 2));
-
-        /* Write the final position before making the element visible. */
-        document.documentElement.style.setProperty(
-          '--vg-booking-floating-top',
-          Math.round(top) + 'px'
-        );
-
-        /*
-          Force the browser to acknowledge the final position before reveal.
-          This prevents the fallback top from being painted to the user.
-        */
-        void floating.offsetHeight;
-
-        floating.style.setProperty('visibility','visible','important');
-        floating.style.setProperty('opacity','1','important');
-        floating.style.setProperty('pointer-events','auto','important');
-        revealed=true;
+        alignOnce();
       });
     });
   }
 
-  function initialAlign(){
-    if(document.fonts && document.fonts.ready){
-      document.fonts.ready.then(calculateAndReveal).catch(calculateAndReveal);
-    }else{
-      calculateAndReveal();
-    }
-
-    const img=floating.querySelector('img');
-    if(img && !img.complete){
-      img.addEventListener('load',calculateAndReveal,{once:true});
-    }
-  }
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',initialAlign,{once:true});
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initialAlign, {once:true});
   }else{
     initialAlign();
   }
 
-  window.addEventListener('load',initialAlign,{once:true,passive:true});
-
   /*
-    Scroll does NOT recalculate the position.
-    Only an actual width/layout change does.
+    Do not use scroll.
+    Do not use generic layout observers.
+    Resize is accepted only when the actual viewport WIDTH changes.
+    This deliberately ignores popup-induced height/scrollbar changes
+    as long as the popup keeps the same viewport width.
   */
-  window.addEventListener('resize',function(){
-    const w=window.innerWidth;
+  window.addEventListener('resize', function(){
+    var width=window.innerWidth;
 
-    if(Math.abs(w-lastWidth)>=2){
-      lastWidth=w;
+    if(width === lastWidth) return;
+    lastWidth=width;
 
-      /*
-        Hide only during a genuine responsive layout change,
-        then calculate the new position and reveal.
-      */
-      if(revealed){
-        floating.style.setProperty('visibility','hidden','important');
-        floating.style.setProperty('opacity','0','important');
-      }
-
-      calculateAndReveal();
+    if(document.body.classList.contains('popup-open')){
+      return;
     }
-  },{passive:true});
 
-  window.addEventListener('orientationchange',function(){
+    if(timer) clearTimeout(timer);
+    timer=setTimeout(function(){
+      alignOnce();
+    },80);
+  }, {passive:true});
+
+  window.addEventListener('orientationchange', function(){
+    if(document.body.classList.contains('popup-open')) return;
+
     lastWidth=window.innerWidth;
 
-    floating.style.setProperty('visibility','hidden','important');
-    floating.style.setProperty('opacity','0','important');
-
-    setTimeout(calculateAndReveal,250);
-  },{passive:true});
+    if(timer) clearTimeout(timer);
+    timer=setTimeout(function(){
+      alignOnce();
+    },250);
+  }, {passive:true});
 
 })();
 </script>
