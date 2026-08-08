@@ -299,105 +299,39 @@
 <script src="popup.js" defer></script>
 <script src="bootstrap.js" defer></script>
 
-<script>
-(function () {
-  'use strict';
 
-  var anchorSelector = '.hero-actions .button--whatsapp';
-  var floatSelector = '.floating-whatsapp';
-  var lastWidth = window.innerWidth;
-  var timer = 0;
+<style id="floating-booking-clean-test">
+/* CLEAN TEST: satu-satunya aturan posisi BOOK NOW di file ini.
+   Tidak ada kalkulasi JavaScript saat refresh. */
+.floating-whatsapp{
+  position:fixed!important;
+  top:57%!important;
+  right:20px!important;
+  bottom:auto!important;
+  left:auto!important;
+  z-index:99999!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  margin:0!important;
+}
 
-  function getElements() {
-    return {
-      anchor: document.querySelector(anchorSelector),
-      floating: document.querySelector(floatSelector)
-    };
+@media(max-width:800px){
+  .floating-whatsapp{
+    top:57%!important;
+    right:0!important;
   }
+}
 
-  function alignFloatingBooking() {
-    var el = getElements();
-    if (!el.anchor || !el.floating) return;
-
-    /* Do not move it while the popup changes the page state. */
-    if (document.body.classList.contains('popup-open')) return;
-
-    var anchorRect = el.anchor.getBoundingClientRect();
-    var floatingHeight = el.floating.offsetHeight || (window.innerWidth <= 800 ? 80 : 90);
-    var centerY = anchorRect.top + (anchorRect.height / 2);
-    var top = centerY - (floatingHeight / 2);
-    var maxTop = Math.max(0, window.innerHeight - floatingHeight);
-    top = Math.max(0, Math.min(top, maxTop));
-
-    /* Store the final position before revealing the button. */
-    document.documentElement.style.setProperty(
-      '--vg-booking-floating-top',
-      Math.round(top) + 'px'
-    );
-
-    el.floating.style.setProperty('top', Math.round(top) + 'px', 'important');
-    el.floating.style.setProperty('bottom', 'auto', 'important');
-    el.floating.style.setProperty('left', 'auto', 'important');
-    el.floating.style.setProperty(
-      'right',
-      window.innerWidth <= 800 ? '0px' : '20px',
-      'important'
-    );
-
-    /* Force layout, then reveal: prevents the refresh jump. */
-    void el.floating.offsetHeight;
-    el.floating.style.setProperty('visibility', 'visible', 'important');
-    el.floating.style.setProperty('opacity', '1', 'important');
-    el.floating.style.setProperty('pointer-events', 'auto', 'important');
-  }
-
-  function initialAlign() {
-    window.requestAnimationFrame(function () {
-      window.requestAnimationFrame(alignFloatingBooking);
-    });
-
-    var el = getElements();
-    if (el.floating) {
-      var img = el.floating.querySelector('img');
-      if (img && !img.complete) {
-        img.addEventListener('load', alignFloatingBooking, { once: true });
-      }
-    }
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(alignFloatingBooking).catch(function () {});
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialAlign, { once: true });
-  } else {
-    initialAlign();
-  }
-
-  window.addEventListener('load', alignFloatingBooking, { once: true, passive: true });
-
-  /* Only a real viewport-width change recalculates the position. */
-  window.addEventListener('resize', function () {
-    var width = window.innerWidth;
-    if (width === lastWidth) return;
-    lastWidth = width;
-
-    if (document.body.classList.contains('popup-open')) return;
-
-    clearTimeout(timer);
-    timer = setTimeout(alignFloatingBooking, 80);
-  }, { passive: true });
-
-  window.addEventListener('orientationchange', function () {
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      lastWidth = window.innerWidth;
-      alignFloatingBooking();
-    }, 250);
-  }, { passive: true });
-})();
-</script>
-
+.floating-whatsapp__button{
+  width:80px!important;
+  height:80px!important;
+  min-width:80px!important;
+  min-height:80px!important;
+  padding:0!important;
+  margin:0!important;
+}
+</style>
 </body>
 </html>
