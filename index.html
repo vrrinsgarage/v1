@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#050505">
   <meta name="description" content="VRRINS GARAGE — servis mobil rumahan dan mekanik panggilan khusus wilayah Palembang.">
   <title>VRRINS GARAGE | Servis Mobil di Rumah Palembang</title>
-  <link rel="stylesheet" href="style.css?v=vg-option2-test">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -280,7 +280,7 @@
   <div class="container footer-bottom"><span>© 2026 VRRINS GARAGE. All Rights Reserved.</span><span>Servis mudah • Transparan • Profesional</span></div>
 </footer>
 
-<div class="floating-whatsapp" id="vg-floating-booking-root" data-floating-booking="isolated">
+<div class="floating-whatsapp">
   <a class="floating-whatsapp__button js-whatsapp" href="https://wa.me/62895622499262?text=Halo%2C%20kak.%20%F0%9F%91%8B%0A%0ABiso%20bantu%20jadwalkan%20booking%3F" target="_blank" rel="noopener" aria-label="Booking VG via WhatsApp" data-wa-message="Halo, kak. 👋&#10;&#10;Biso bantu jadwalkan booking?">
     <img src="images/book-now.webp" alt="Booking VG" width="80" height="80">
   </a>
@@ -300,112 +300,5 @@
 <script src="bootstrap.js" defer></script>
 
 
-<style id="vg-floating-booking-option2">
-/* OPTION 2: BOOK NOW berdiri sendiri di luar Header/Hero/Menu/Popup.
-   Posisi hanya dihitung sekali saat halaman siap, lalu dikunci. */
-#vg-floating-booking-root {
-  position: fixed !important;
-  top: 0 !important;
-  right: 20px !important;
-  bottom: auto !important;
-  left: auto !important;
-  z-index: 99999 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-#vg-floating-booking-root .floating-whatsapp__button {
-  display: flex !important;
-  width: 80px !important;
-  height: 80px !important;
-  min-width: 80px !important;
-  min-height: 80px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 0 !important;
-  border-radius: 50% !important;
-  overflow: hidden !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-#vg-floating-booking-root .floating-whatsapp__button img {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-}
-@media (max-width: 800px) {
-  #vg-floating-booking-root { right: 0 !important; }
-}
-@media (min-width: 801px) {
-  #vg-floating-booking-root { right: 20px !important; }
-}
-</style>
-<script>
-(function () {
-  'use strict';
-  const anchor = document.querySelector('.hero-actions .button--whatsapp');
-  const floating = document.getElementById('vg-floating-booking-root');
-  if (!anchor || !floating) return;
-
-  let lastWidth = window.innerWidth;
-  let raf = 0;
-
-  function alignOnce() {
-    const rect = anchor.getBoundingClientRect();
-    const h = floating.offsetHeight || 80;
-    const top = Math.max(0, Math.min(
-      rect.top + rect.height / 2 - h / 2,
-      window.innerHeight - h
-    ));
-    floating.style.setProperty('top', Math.round(top) + 'px', 'important');
-    floating.style.setProperty('visibility', 'visible', 'important');
-    floating.style.setProperty('opacity', '1', 'important');
-    floating.style.setProperty('pointer-events', 'auto', 'important');
-  }
-
-  function scheduleAlign() {
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(function () {
-      requestAnimationFrame(alignOnce);
-    });
-  }
-
-  function initialAlign() {
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(scheduleAlign).catch(scheduleAlign);
-    } else {
-      scheduleAlign();
-    }
-    const img = floating.querySelector('img');
-    if (img && !img.complete) img.addEventListener('load', scheduleAlign, { once: true });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialAlign, { once: true });
-  } else {
-    initialAlign();
-  }
-  window.addEventListener('load', initialAlign, { once: true, passive: true });
-
-  /* Tidak ada listener scroll. Hanya perubahan LEBA R viewport yang dihitung ulang. */
-  window.addEventListener('resize', function () {
-    const width = window.innerWidth;
-    /* Abaikan perubahan kecil akibat scrollbar/popup/address bar. */
-    if (Math.abs(width - lastWidth) < 100) return;
-    lastWidth = width;
-    scheduleAlign();
-  }, { passive: true });
-
-  window.addEventListener('orientationchange', function () {
-    lastWidth = window.innerWidth;
-    setTimeout(scheduleAlign, 250);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>
