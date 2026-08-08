@@ -300,231 +300,191 @@
 <script src="bootstrap.js" defer></script>
 
 
-<style id="floating-booking-final-fix">
-/* BOOK NOW — FINAL TEST
-   One fixed element, two anchors:
-   - mobile + menu open  -> .nav-booking
-   - everything else     -> Hero VG BOOKING
-   No scroll-based repositioning.
-*/
-.floating-whatsapp{
-  position:fixed!important;
-  top:var(--vg-booking-floating-top, 0px)!important;
-  right:0!important;
-  bottom:auto!important;
-  left:auto!important;
-  width:80px!important;
-  height:80px!important;
-  min-width:80px!important;
-  min-height:80px!important;
-  margin:0!important;
-  padding:0!important;
-  z-index:99999!important;
-  display:block!important;
-  visibility:hidden!important;
-  opacity:0!important;
-  pointer-events:none!important;
-  transform:none!important;
-}
-.floating-whatsapp__button{
-  display:block!important;
-  width:80px!important;
-  height:80px!important;
-  min-width:80px!important;
-  min-height:80px!important;
-  margin:0!important;
-  padding:0!important;
-  border:0!important;
-  border-radius:0!important;
-  background:transparent!important;
-  background-image:none!important;
-  box-shadow:none!important;
-  line-height:0!important;
-  overflow:hidden!important;
-}
-.floating-whatsapp__button img{
-  display:block!important;
-  width:80px!important;
-  height:80px!important;
-  min-width:80px!important;
-  min-height:80px!important;
-  margin:0!important;
-  padding:0!important;
-  object-fit:contain!important;
-}
-body.popup-open .floating-whatsapp{display:none!important;}
+<!-- =========================================================
+     VRRINS GARAGE — FINAL FLOATING BOOK NOW POSITION
+     - Mobile: menempel ke sisi kanan layar
+     - Desktop: jarak 20px dari sisi kanan
+     - Vertikal: sejajar dengan pusat tombol VG BOOKING di hero
+     - Posisi dihitung sebelum tombol ditampilkan, sehingga refresh
+       tidak membuat BOOK NOW "terbang" dari atas lalu turun kembali.
+     - Scroll/popup tidak mengubah posisi yang sudah dikunci.
+     ========================================================= -->
+<style id="vg-floating-booking-final">
+  .floating-whatsapp {
+    position: fixed !important;
+    top: 0 !important;
+    right: 20px !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 99999 !important;
+    display: block !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: none !important;
+  }
+
+  .floating-whatsapp__button {
+    display: flex !important;
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .floating-whatsapp__button img {
+    display: block !important;
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @media (max-width: 800px) {
+    .floating-whatsapp {
+      right: 0 !important;
+    }
+  }
+
+  @media (min-width: 801px) {
+    .floating-whatsapp {
+      right: 20px !important;
+    }
+  }
 </style>
 
 <script>
 (function () {
   'use strict';
 
-  var HERO = '.hero-actions .button--whatsapp';
-  var NAV = '.nav-booking';
-  var FLOATING = '.floating-whatsapp';
-  var TOGGLE = '#nav-toggle';
-  var MOBILE_BREAKPOINT = 800;
-  var raf = 0;
-  var revealed = false;
-  var lastWidth = window.innerWidth;
+  function initFloatingBooking() {
+    var floating = document.querySelector('.floating-whatsapp');
+    var heroBooking = document.querySelector('.hero-actions .button--whatsapp');
+    var navBooking = document.querySelector('.nav-booking');
+    var nav = document.querySelector('.main-nav');
+    var toggle = document.querySelector('.nav-toggle');
 
-  function elements() {
-    return {
-      hero: document.querySelector(HERO),
-      nav: document.querySelector(NAV),
-      floating: document.querySelector(FLOATING),
-      toggle: document.querySelector(TOGGLE),
-      menu: document.querySelector('#main-navigation')
-    };
-  }
+    if (!floating || !heroBooking) return;
 
-  function mobile() {
-    return window.innerWidth <= MOBILE_BREAKPOINT;
-  }
+    var lastWidth = window.innerWidth;
+    var raf = 0;
+    var positioned = false;
 
-  function menuOpen(el) {
-    if (!el) return false;
-    return (el.toggle && el.toggle.getAttribute('aria-expanded') === 'true') ||
-           (el.menu && el.menu.classList.contains('is-open'));
-  }
-
-  function chooseAnchor(el) {
-    /*
-      Mobile + menu open: follow VG BOOKING inside the header menu.
-      Mobile + menu closed: follow VG BOOKING in Hero.
-      Desktop: always follow Hero VG BOOKING.
-    */
-    if (mobile() && menuOpen(el) && el.nav) return el.nav;
-    return el.hero;
-  }
-
-  function hide() {
-    var el = elements();
-    if (!el.floating) return;
-    el.floating.style.setProperty('visibility', 'hidden', 'important');
-    el.floating.style.setProperty('opacity', '0', 'important');
-    el.floating.style.setProperty('pointer-events', 'none', 'important');
-    revealed = false;
-  }
-
-  function align() {
-    cancelAnimationFrame(raf);
-
-    raf = requestAnimationFrame(function () {
-      var el = elements();
-      if (!el.floating) return;
-      if (document.body.classList.contains('popup-open')) return;
-
-      var anchor = chooseAnchor(el);
-      if (!anchor) return;
-
-      var rect = anchor.getBoundingClientRect();
-      var height = el.floating.getBoundingClientRect().height || 80;
-      var centerY = rect.top + (rect.height / 2);
-      var top = centerY - (height / 2);
-      var maxTop = Math.max(0, window.innerHeight - height);
-      top = Math.max(0, Math.min(top, maxTop));
-
-      document.documentElement.style.setProperty(
-        '--vg-booking-floating-top',
-        Math.round(top) + 'px'
+    function isMobileMenuOpen() {
+      return window.innerWidth <= 800 && (
+        (nav && nav.classList.contains('is-open')) ||
+        (toggle && toggle.getAttribute('aria-expanded') === 'true')
       );
+    }
 
-      el.floating.style.setProperty('top', Math.round(top) + 'px', 'important');
-      el.floating.style.setProperty(
-        'right', mobile() ? '0px' : '20px',
-        'important'
-      );
+    function getActiveBooking() {
+      if (isMobileMenuOpen() && navBooking) return navBooking;
+      return heroBooking;
+    }
 
-      /* Reveal only after the final position has been written. */
-      void el.floating.offsetHeight;
-      el.floating.style.setProperty('visibility', 'visible', 'important');
-      el.floating.style.setProperty('opacity', '1', 'important');
-      el.floating.style.setProperty('pointer-events', 'auto', 'important');
-      revealed = true;
-    });
-  }
+    function setSidePosition() {
+      floating.style.setProperty('right', window.innerWidth <= 800 ? '0px' : '20px', 'important');
+    }
 
-  function alignAfterLayout() {
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(function () {
-      requestAnimationFrame(align);
-    });
-  }
+    function alignNow() {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        var target = getActiveBooking();
+        if (!target) return;
 
-  function setup() {
-    var el = elements();
-    if (!el.floating) return;
+        var rect = target.getBoundingClientRect();
+        var height = floating.offsetHeight || 80;
+        var top = rect.top + (rect.height / 2) - (height / 2);
+        top = Math.max(0, Math.min(top, window.innerHeight - height));
 
-    hide();
+        setSidePosition();
+        floating.style.setProperty('top', Math.round(top) + 'px', 'important');
+        floating.style.setProperty('bottom', 'auto', 'important');
+        floating.style.setProperty('transform', 'none', 'important');
+        floating.style.setProperty('visibility', 'visible', 'important');
+        floating.style.setProperty('opacity', '1', 'important');
+        floating.style.setProperty('pointer-events', 'auto', 'important');
+        positioned = true;
+      });
+    }
 
-    var img = el.floating.querySelector('img');
-    var fontsReady = document.fonts && document.fonts.ready
-      ? document.fonts.ready
-      : Promise.resolve();
+    function schedule() {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        requestAnimationFrame(alignNow);
+      });
+    }
 
-    fontsReady.then(function () {
-      if (img && !img.complete) {
-        img.addEventListener('load', alignAfterLayout, { once: true });
+    function watchMenu() {
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          setTimeout(schedule, 0);
+          setTimeout(schedule, 80);
+          setTimeout(schedule, 180);
+        });
       }
-      alignAfterLayout();
-    }).catch(alignAfterLayout);
-
-    /* Menu state is the only interaction that changes the anchor on mobile. */
-    if (el.toggle) {
-      el.toggle.addEventListener('click', function () {
-        setTimeout(alignAfterLayout, 0);
-      }, { passive: true });
+      if (nav && window.MutationObserver) {
+        var observer = new MutationObserver(function () {
+          schedule();
+        });
+        observer.observe(nav, { attributes: true, attributeFilter: ['class', 'aria-hidden', 'style'] });
+      }
     }
 
-    if (el.menu && window.MutationObserver) {
-      var observer = new MutationObserver(function (mutations) {
-        for (var i = 0; i < mutations.length; i++) {
-          if (mutations[i].attributeName === 'class') {
-            alignAfterLayout();
-            break;
-          }
-        }
-      });
-      observer.observe(el.menu, { attributes: true, attributeFilter: ['class'] });
-    }
-
-    if (el.toggle && window.MutationObserver) {
-      var toggleObserver = new MutationObserver(function (mutations) {
-        for (var i = 0; i < mutations.length; i++) {
-          if (mutations[i].attributeName === 'aria-expanded') {
-            alignAfterLayout();
-            break;
-          }
-        }
-      });
-      toggleObserver.observe(el.toggle, { attributes: true, attributeFilter: ['aria-expanded'] });
-    }
-
-    /* Responsive layout changes only. No scroll listener on purpose. */
+    window.addEventListener('load', schedule, { passive: true });
     window.addEventListener('resize', function () {
-      var width = window.innerWidth;
-      if (Math.abs(width - lastWidth) < 2) return;
-      lastWidth = width;
-      hide();
-      alignAfterLayout();
+      if (window.innerWidth !== lastWidth || !positioned) {
+        lastWidth = window.innerWidth;
+        schedule();
+      }
     }, { passive: true });
-
     window.addEventListener('orientationchange', function () {
       lastWidth = window.innerWidth;
-      hide();
-      setTimeout(alignAfterLayout, 200);
+      schedule();
     }, { passive: true });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(schedule).catch(function () {});
+    }
+
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(function () {
+        if (!positioned || isMobileMenuOpen()) schedule();
+      });
+      ro.observe(heroBooking);
+      if (navBooking) ro.observe(navBooking);
+    }
+
+    watchMenu();
+    schedule();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setup, { once: true });
+    document.addEventListener('DOMContentLoaded', initFloatingBooking, { once: true });
   } else {
-    setup();
+    initFloatingBooking();
   }
-
-  window.addEventListener('load', alignAfterLayout, { once: true, passive: true });
 })();
 </script>
+
 </body>
 </html>
