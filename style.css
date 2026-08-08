@@ -387,3 +387,72 @@ body.popup-open .floating-whatsapp{display:none!important}
 
 /* OPTION 2 — isolated BOOK NOW root. The test page uses #vg-floating-booking-root. */
 #vg-floating-booking-root { position: fixed !important; }
+
+
+/* ==========================================================
+   VG BOOK NOW — OPTION 2 FINAL ISOLATION LAYER
+   Must remain at the very end of this stylesheet.
+   ========================================================== */
+#vg-floating-booking-root[data-floating-booking="isolated"] {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 99999 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}
+#vg-floating-booking-root[data-floating-booking="isolated"] .floating-whatsapp__button {
+  display: flex !important;
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#vg-floating-booking-root[data-floating-booking="isolated"] .floating-whatsapp__button img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+@media (max-width: 800px) {
+  #vg-floating-booking-root[data-floating-booking="isolated"] {
+    right: 0 !important;
+  }
+  #vg-floating-booking-root[data-floating-booking="isolated"] .floating-whatsapp__button,
+  #vg-floating-booking-root[data-floating-booking="isolated"] .floating-whatsapp__button img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+@media (min-width: 801px) {
+  #vg-floating-booking-root[data-floating-booking="isolated"] {
+    right: 20px !important;
+  }
+  #vg-floating-booking-root[data-floating-booking="isolated"] .floating-whatsapp__button,
+  #vg-floating-booking-root[data-floating-booking="isolated"] .floating-whatsapp__button img {
+    width: 90px !important;
+    height: 90px !important;
+  }
+}
+body.popup-open #vg-floating-booking-root[data-floating-booking="isolated"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
