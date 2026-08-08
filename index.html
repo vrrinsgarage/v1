@@ -299,131 +299,130 @@
 <script src="popup.js" defer></script>
 <script src="bootstrap.js" defer></script>
 
+
+<style id="floating-booking-alignment-test">
+/* V7 — Option 2
+   Initial position is resolved before BOOK NOW is revealed.
+   No fallback position is ever visible. */
+.floating-whatsapp{
+  position:fixed!important;
+  top:var(--vg-booking-floating-top, 0px)!important;
+  bottom:auto!important;
+  z-index:99999!important;
+  display:block!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  margin:0!important;
+  pointer-events:none!important;
+}
+
+@media(max-width:800px){
+  .floating-whatsapp{right:0!important;}
+}
+
+@media(min-width:801px){
+  .floating-whatsapp{right:20px!important;}
+}
+</style>
+
 <script>
-(function () {
+(function(){
   'use strict';
 
-  var anchorSelector = '.hero-actions .button--whatsapp';
-  var floatSelector = '.floating-whatsapp';
-  var lastWidth = window.innerWidth;
-  var resizeTimer = 0;
+  const booking=document.querySelector('.hero-actions .button--whatsapp');
+  const floating=document.querySelector('.floating-whatsapp');
+  if(!booking || !floating) return;
 
-  function getElements() {
-    return {
-      anchor: document.querySelector(anchorSelector),
-      floating: document.querySelector(floatSelector)
-    };
-  }
+  let lastWidth=window.innerWidth;
+  let raf=0;
+  let revealed=false;
 
-  function alignOnce() {
-    var el = getElements();
-    if (!el.anchor || !el.floating) return;
+  function calculateAndReveal(){
+    cancelAnimationFrame(raf);
 
-    /* Popup tidak boleh ikut campur dengan posisi terakhir. */
-    if (document.body.classList.contains('popup-open')) return;
+    raf=requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
 
-    var anchorRect = el.anchor.getBoundingClientRect();
-    var floatingHeight = el.floating.offsetHeight || 80;
+        const bookingRect=booking.getBoundingClientRect();
+        const floatingHeight=floating.getBoundingClientRect().height || 135;
 
-    /*
-      Titik tengah VG BOOKING = titik tengah BOOK NOW.
-      Hanya ini yang menentukan posisi vertikal.
-    */
-    var centerY = anchorRect.top + (anchorRect.height / 2);
-    var top = centerY - (floatingHeight / 2);
+        const centerY=bookingRect.top + (bookingRect.height / 2);
+        const top=Math.max(0, centerY - (floatingHeight / 2));
 
-    var maxTop = Math.max(0, window.innerHeight - floatingHeight);
-    top = Math.max(0, Math.min(top, maxTop));
+        /* Write the final position before making the element visible. */
+        document.documentElement.style.setProperty(
+          '--vg-booking-floating-top',
+          Math.round(top) + 'px'
+        );
 
-    el.floating.style.setProperty('top', Math.round(top) + 'px', 'important');
-    el.floating.style.setProperty('bottom', 'auto', 'important');
-    el.floating.style.setProperty('left', 'auto', 'important');
-    el.floating.style.setProperty(
-      'right',
-      window.innerWidth <= 800 ? '0px' : '20px',
-      'important'
-    );
+        /*
+          Force the browser to acknowledge the final position before reveal.
+          This prevents the fallback top from being painted to the user.
+        */
+        void floating.offsetHeight;
 
-    /*
-      Baru tampil setelah posisi final sudah terpasang.
-      Ini menghilangkan efek "muncul di posisi lama lalu meloncat".
-    */
-    void el.floating.offsetHeight;
-    el.floating.style.setProperty('visibility', 'visible', 'important');
-    el.floating.style.setProperty('opacity', '1', 'important');
-    el.floating.style.setProperty('pointer-events', 'auto', 'important');
-  }
-
-  function initialAlign() {
-    /*
-      Tunggu dua frame agar layout Hero, font, dan ukuran tombol
-      sudah stabil sebelum menghitung posisi.
-    */
-    requestAnimationFrame(function () {
-      requestAnimationFrame(alignOnce);
+        floating.style.setProperty('visibility','visible','important');
+        floating.style.setProperty('opacity','1','important');
+        floating.style.setProperty('pointer-events','auto','important');
+        revealed=true;
+      });
     });
   }
 
-  function waitForAssetsAndAlign() {
-    var done = false;
-
-    function run() {
-      if (done) return;
-      done = true;
-      initialAlign();
+  function initialAlign(){
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(calculateAndReveal).catch(calculateAndReveal);
+    }else{
+      calculateAndReveal();
     }
 
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(run).catch(run);
-    } else {
-      run();
-    }
-
-    var el = getElements();
-    var img = el.floating && el.floating.querySelector('img');
-
-    if (img && !img.complete) {
-      done = false;
-      img.addEventListener('load', run, { once: true });
-    } else {
-      run();
+    const img=floating.querySelector('img');
+    if(img && !img.complete){
+      img.addEventListener('load',calculateAndReveal,{once:true});
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', waitForAssetsAndAlign, { once: true });
-  } else {
-    waitForAssetsAndAlign();
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initialAlign,{once:true});
+  }else{
+    initialAlign();
   }
+
+  window.addEventListener('load',initialAlign,{once:true,passive:true});
 
   /*
-    Resize hanya untuk perubahan LEBAR viewport nyata
-    (misalnya rotasi HP / perpindahan desktop-mobile).
-    Perubahan tinggi akibat address bar tidak memindahkan tombol.
+    Scroll does NOT recalculate the position.
+    Only an actual width/layout change does.
   */
-  window.addEventListener('resize', function () {
-    var width = window.innerWidth;
-    if (width === lastWidth) return;
+  window.addEventListener('resize',function(){
+    const w=window.innerWidth;
 
-    lastWidth = width;
-    clearTimeout(resizeTimer);
+    if(Math.abs(w-lastWidth)>=2){
+      lastWidth=w;
 
-    resizeTimer = setTimeout(function () {
-      if (!document.body.classList.contains('popup-open')) {
-        alignOnce();
+      /*
+        Hide only during a genuine responsive layout change,
+        then calculate the new position and reveal.
+      */
+      if(revealed){
+        floating.style.setProperty('visibility','hidden','important');
+        floating.style.setProperty('opacity','0','important');
       }
-    }, 100);
-  }, { passive: true });
 
-  window.addEventListener('orientationchange', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      lastWidth = window.innerWidth;
-      alignOnce();
-    }, 150);
-  }, { passive: true });
+      calculateAndReveal();
+    }
+  },{passive:true});
+
+  window.addEventListener('orientationchange',function(){
+    lastWidth=window.innerWidth;
+
+    floating.style.setProperty('visibility','hidden','important');
+    floating.style.setProperty('opacity','0','important');
+
+    setTimeout(calculateAndReveal,250);
+  },{passive:true});
+
 })();
 </script>
-
 </body>
 </html>
