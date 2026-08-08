@@ -1,12 +1,11 @@
-VRRINS GARAGE — TEST 80x80
+VRRINS GARAGE — BOOK NOW FINAL TEST
 
-Floating Book Now:
-- Desktop: 80x80 px
-- Mobile: 80x80 px
-- Circular
-- Remains position: fixed
-- Right: 20px
-- Test vertical position: top 57%
-- No changes to WhatsApp link, VG BOOKING, popup, or JavaScript.
+Perubahan hanya untuk floating BOOK NOW:
+1. Mobile + menu tertutup: sejajar dengan VG BOOKING di Hero.
+2. Mobile + menu terbuka: sejajar dengan VG BOOKING di menu/header.
+3. Desktop: sejajar dengan VG BOOKING di Hero.
+4. Tidak ada perhitungan ulang saat scroll.
+5. Posisi dihitung ulang hanya saat menu berubah, resize, atau orientation change.
+6. Tidak mengubah HTML tombol VG BOOKING atau tampilan Hero.
 
-This is a position/size test package, not the final full project ZIP.
+File index.html dan style.css dapat dipakai sebagai pengganti untuk pengujian pada salinan website.

@@ -299,164 +299,232 @@
 <script src="popup.js" defer></script>
 <script src="bootstrap.js" defer></script>
 
-<style id="floating-booking-test-fix">
-/* TEST: BOOK NOW tetap terisolasi dari layout/header. */
+
+<style id="floating-booking-final-fix">
+/* BOOK NOW — FINAL TEST
+   One fixed element, two anchors:
+   - mobile + menu open  -> .nav-booking
+   - everything else     -> Hero VG BOOKING
+   No scroll-based repositioning.
+*/
 .floating-whatsapp{
-  position:fixed !important;
-  top:var(--vg-floating-top, 0px) !important;
-  bottom:auto !important;
-  left:auto !important;
-  right:20px !important;
-  z-index:99999 !important;
-  margin:0 !important;
-  padding:0 !important;
-  visibility:hidden !important;
-  opacity:0 !important;
-  pointer-events:none !important;
-  transform:none !important;
+  position:fixed!important;
+  top:var(--vg-booking-floating-top, 0px)!important;
+  right:0!important;
+  bottom:auto!important;
+  left:auto!important;
+  width:80px!important;
+  height:80px!important;
+  min-width:80px!important;
+  min-height:80px!important;
+  margin:0!important;
+  padding:0!important;
+  z-index:99999!important;
+  display:block!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  transform:none!important;
 }
 .floating-whatsapp__button{
-  width:80px !important;
-  height:80px !important;
-  min-width:80px !important;
-  min-height:80px !important;
-  margin:0 !important;
-  padding:0 !important;
+  display:block!important;
+  width:80px!important;
+  height:80px!important;
+  min-width:80px!important;
+  min-height:80px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  line-height:0!important;
+  overflow:hidden!important;
 }
-@media (max-width:800px){
-  .floating-whatsapp{right:0 !important;}
+.floating-whatsapp__button img{
+  display:block!important;
+  width:80px!important;
+  height:80px!important;
+  min-width:80px!important;
+  min-height:80px!important;
+  margin:0!important;
+  padding:0!important;
+  object-fit:contain!important;
 }
+body.popup-open .floating-whatsapp{display:none!important;}
 </style>
 
 <script>
 (function () {
   'use strict';
 
-  var heroSelector = '.hero-actions .button--whatsapp';
-  var navSelector = '.nav-booking';
-  var floatingSelector = '.floating-whatsapp';
-  var toggleSelector = '#nav-toggle';
+  var HERO = '.hero-actions .button--whatsapp';
+  var NAV = '.nav-booking';
+  var FLOATING = '.floating-whatsapp';
+  var TOGGLE = '#nav-toggle';
+  var MOBILE_BREAKPOINT = 800;
+  var raf = 0;
+  var revealed = false;
   var lastWidth = window.innerWidth;
-  var timer = 0;
 
-  function getElements() {
+  function elements() {
     return {
-      hero: document.querySelector(heroSelector),
-      nav: document.querySelector(navSelector),
-      floating: document.querySelector(floatingSelector),
-      toggle: document.querySelector(toggleSelector)
+      hero: document.querySelector(HERO),
+      nav: document.querySelector(NAV),
+      floating: document.querySelector(FLOATING),
+      toggle: document.querySelector(TOGGLE),
+      menu: document.querySelector('#main-navigation')
     };
   }
 
-  function menuIsOpen(toggle) {
-    return !!toggle && toggle.getAttribute('aria-expanded') === 'true';
+  function mobile() {
+    return window.innerWidth <= MOBILE_BREAKPOINT;
+  }
+
+  function menuOpen(el) {
+    if (!el) return false;
+    return (el.toggle && el.toggle.getAttribute('aria-expanded') === 'true') ||
+           (el.menu && el.menu.classList.contains('is-open'));
   }
 
   function chooseAnchor(el) {
     /*
-      Mobile + menu terbuka: BOOK NOW mengikuti VG BOOKING di menu.
-      Selain itu: BOOK NOW mengikuti VG BOOKING di Hero.
+      Mobile + menu open: follow VG BOOKING inside the header menu.
+      Mobile + menu closed: follow VG BOOKING in Hero.
+      Desktop: always follow Hero VG BOOKING.
     */
-    if (window.innerWidth <= 800 && menuIsOpen(el.toggle) && el.nav) {
-      return el.nav;
-    }
+    if (mobile() && menuOpen(el) && el.nav) return el.nav;
     return el.hero;
   }
 
-  function align() {
-    var el = getElements();
+  function hide() {
+    var el = elements();
     if (!el.floating) return;
-    if (document.body.classList.contains('popup-open')) return;
+    el.floating.style.setProperty('visibility', 'hidden', 'important');
+    el.floating.style.setProperty('opacity', '0', 'important');
+    el.floating.style.setProperty('pointer-events', 'none', 'important');
+    revealed = false;
+  }
 
-    var anchor = chooseAnchor(el);
-    if (!anchor) return;
+  function align() {
+    cancelAnimationFrame(raf);
 
-    var rect = anchor.getBoundingClientRect();
-    var height = el.floating.offsetHeight || 80;
-    var centerY = rect.top + (rect.height / 2);
-    var top = centerY - (height / 2);
-    var maxTop = Math.max(0, window.innerHeight - height);
-    top = Math.max(0, Math.min(top, maxTop));
+    raf = requestAnimationFrame(function () {
+      var el = elements();
+      if (!el.floating) return;
+      if (document.body.classList.contains('popup-open')) return;
 
-    el.floating.style.setProperty('top', Math.round(top) + 'px', 'important');
-    el.floating.style.setProperty(
-      'right',
-      window.innerWidth <= 800 ? '0px' : '20px',
-      'important'
-    );
+      var anchor = chooseAnchor(el);
+      if (!anchor) return;
 
-    void el.floating.offsetHeight;
-    el.floating.style.setProperty('visibility', 'visible', 'important');
-    el.floating.style.setProperty('opacity', '1', 'important');
-    el.floating.style.setProperty('pointer-events', 'auto', 'important');
+      var rect = anchor.getBoundingClientRect();
+      var height = el.floating.getBoundingClientRect().height || 80;
+      var centerY = rect.top + (rect.height / 2);
+      var top = centerY - (height / 2);
+      var maxTop = Math.max(0, window.innerHeight - height);
+      top = Math.max(0, Math.min(top, maxTop));
+
+      document.documentElement.style.setProperty(
+        '--vg-booking-floating-top',
+        Math.round(top) + 'px'
+      );
+
+      el.floating.style.setProperty('top', Math.round(top) + 'px', 'important');
+      el.floating.style.setProperty(
+        'right', mobile() ? '0px' : '20px',
+        'important'
+      );
+
+      /* Reveal only after the final position has been written. */
+      void el.floating.offsetHeight;
+      el.floating.style.setProperty('visibility', 'visible', 'important');
+      el.floating.style.setProperty('opacity', '1', 'important');
+      el.floating.style.setProperty('pointer-events', 'auto', 'important');
+      revealed = true;
+    });
   }
 
   function alignAfterLayout() {
-    cancelAnimationFrame(timer);
-    timer = requestAnimationFrame(function () {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () {
       requestAnimationFrame(align);
     });
   }
 
-  function bindMenu() {
-    var el = getElements();
-    if (!el.toggle) return;
+  function setup() {
+    var el = elements();
+    if (!el.floating) return;
 
-    /* Pastikan setiap perubahan buka/tutup menu langsung mengubah anchor. */
-    el.toggle.addEventListener('click', function () {
-      setTimeout(alignAfterLayout, 0);
-      setTimeout(alignAfterLayout, 120);
-    }, { passive: true });
-
-    var observer = new MutationObserver(function (mutations) {
-      for (var i = 0; i < mutations.length; i++) {
-        if (mutations[i].attributeName === 'aria-expanded') {
-          alignAfterLayout();
-          break;
-        }
-      }
-    });
-    observer.observe(el.toggle, { attributes: true, attributeFilter: ['aria-expanded'] });
-  }
-
-  function init() {
-    var el = getElements();
-    if (!el.hero || !el.floating) return;
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(alignAfterLayout).catch(alignAfterLayout);
-    } else {
-      alignAfterLayout();
-    }
+    hide();
 
     var img = el.floating.querySelector('img');
-    if (img && !img.complete) {
-      img.addEventListener('load', alignAfterLayout, { once: true });
+    var fontsReady = document.fonts && document.fonts.ready
+      ? document.fonts.ready
+      : Promise.resolve();
+
+    fontsReady.then(function () {
+      if (img && !img.complete) {
+        img.addEventListener('load', alignAfterLayout, { once: true });
+      }
+      alignAfterLayout();
+    }).catch(alignAfterLayout);
+
+    /* Menu state is the only interaction that changes the anchor on mobile. */
+    if (el.toggle) {
+      el.toggle.addEventListener('click', function () {
+        setTimeout(alignAfterLayout, 0);
+      }, { passive: true });
     }
 
-    bindMenu();
+    if (el.menu && window.MutationObserver) {
+      var observer = new MutationObserver(function (mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === 'class') {
+            alignAfterLayout();
+            break;
+          }
+        }
+      });
+      observer.observe(el.menu, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    if (el.toggle && window.MutationObserver) {
+      var toggleObserver = new MutationObserver(function (mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === 'aria-expanded') {
+            alignAfterLayout();
+            break;
+          }
+        }
+      });
+      toggleObserver.observe(el.toggle, { attributes: true, attributeFilter: ['aria-expanded'] });
+    }
+
+    /* Responsive layout changes only. No scroll listener on purpose. */
+    window.addEventListener('resize', function () {
+      var width = window.innerWidth;
+      if (Math.abs(width - lastWidth) < 2) return;
+      lastWidth = width;
+      hide();
+      alignAfterLayout();
+    }, { passive: true });
+
+    window.addEventListener('orientationchange', function () {
+      lastWidth = window.innerWidth;
+      hide();
+      setTimeout(alignAfterLayout, 200);
+    }, { passive: true });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
+    document.addEventListener('DOMContentLoaded', setup, { once: true });
   } else {
-    init();
+    setup();
   }
 
-  window.addEventListener('resize', function () {
-    var width = window.innerWidth;
-    if (width === lastWidth) return;
-    lastWidth = width;
-    clearTimeout(timer);
-    timer = setTimeout(alignAfterLayout, 100);
-  }, { passive: true });
-
-  window.addEventListener('orientationchange', function () {
-    lastWidth = window.innerWidth;
-    setTimeout(alignAfterLayout, 150);
-  }, { passive: true });
+  window.addEventListener('load', alignAfterLayout, { once: true, passive: true });
 })();
 </script>
-
 </body>
 </html>
