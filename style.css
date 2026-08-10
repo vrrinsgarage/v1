@@ -3099,7 +3099,7 @@ body.popup-open .floating-whatsapp {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 320px;
+  max-width: 242px;
   min-height: 48px;
   padding: 12px 24px;
   border: 0;
@@ -3166,7 +3166,7 @@ body.popup-open .floating-whatsapp {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 320px;
+  max-width: 242px;
   min-height: 48px;
   margin: 12px auto 0;
   padding: 12px 20px;
@@ -3221,4 +3221,13 @@ body.popup-open .floating-whatsapp {
   object-fit: fill;
   object-position: center;
   pointer-events: none;
+}
+
+
+/* VG LOCATION CTA SIZE — approved final sizes only */
+@media (max-width: 800px) {
+  .vg-location-check,
+  .vg-location-booking {
+    max-width: 190px;
+  }
 }
